@@ -61,7 +61,7 @@ export default function Modal({toggleModal}:any) {
                     </div>
                 
                     <div className="cust-details">
-                        <h5>Fill your details</h5>
+                        <h5>Fill your details to complete your order</h5>
                         <br />
 
                         <form className="details" id="details">

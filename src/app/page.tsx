@@ -226,8 +226,9 @@ function Banner() {
         <div>
           <h1>
             100% <br />
-            <span style={{color: 'var(--green)'}}>Natural,</span>
-            <span style={{color: 'var(--blue)'}}>Crunchy &</span>
+            
+            <span style={{color: 'var(--green)'}}>Natural, </span>
+            <span style={{color: 'var(--blue)'}}>Crunchy & </span>
             <span style={{color: 'var(--red)'}}>Yummy</span>
           </h1>
 

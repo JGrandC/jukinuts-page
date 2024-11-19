@@ -120,12 +120,52 @@ function Process() {
   )
 } 
 
+function Team() {
+  return (
+    <section className="team" id="team">
+
+      <h2>Meet our Team</h2>
+
+      <div className="group">
+        <figure>
+          <Image 
+            alt="jgrandcommodities"
+            src={`/img/cashews.JPG`}
+            width={1000}
+            height={100}
+          />
+          <figcaption>- Justice Ganaku</figcaption>
+        </figure>
+        <figure>
+          <Image 
+            alt="jgrandcommodities"
+            src={`/img/cashews.JPG`}
+            width={1000}
+            height={100}
+          />
+          <figcaption>- Zee</figcaption>
+        </figure>
+        <figure>
+          <Image 
+            alt="jgrandcommodities"
+            src={`/img/cashews.JPG`}
+            width={1000}
+            height={100}
+          />
+          <figcaption>- Others</figcaption>
+        </figure>
+      </div>
+    </section>
+  )
+}
+
 export default function Story() {
   return (
     <main>
       <Banner/>
       <About/>
       <Process/>
+      <Team/>
     </main>
   )
 }
