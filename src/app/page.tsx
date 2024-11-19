@@ -213,13 +213,6 @@ function Banner() {
             </div>
           ))}
         </div>
-
-        {/* <Image 
-          alt="jgrandcommodities"
-          src={'/img/mini_magic-03.jpg'}
-          width={2000}
-          height={1000}
-        /> */}
       </div>
 
       <div className="banner_txt">
