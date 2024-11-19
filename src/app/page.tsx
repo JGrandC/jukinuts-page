@@ -508,8 +508,8 @@ function Faq() {
         <li>
           <span>Which store can shop Juki Nuts products</span>
           <p>You can shop for our products from the following stores: Shoprites, 
-            Marina Mall, Tesbury&quote;s Legon City Mall, Valley View Rd Total-Oyibi, Amrahia Goil,
-            The Blue Mall-Conference Center, Jungle Jims&quote;s Mart, Powerland Total, Haatso Goil,
+            Marina Mall, Tesbury&apos;s Legon City Mall, Valley View Rd Total-Oyibi, Amrahia Goil,
+            The Blue Mall-Conference Center, Jungle Jims&apos;s Mart, Powerland Total, Haatso Goil,
             Palm Wine Junction Shell-Labadi, AnC Shell-East legon</p>
         </li>
         <li>
@@ -528,8 +528,8 @@ function Reviews() {
         <q>
           I tried cashew nuts for the first time with Jukinuts & 
           it was an unexpectedly delightful experience. I had the 
-          sea salt flavor as well as the chilli, & couldn't get enough of them!
-          I'll be experimenting with these in my gari soakings over the weekend to see how it goes
+          sea salt flavor as well as the chilli, & couldn&apos;t get enough of them!
+          I&apos;ll be experimenting with these in my gari soakings over the weekend to see how it goes
         </q>
         <cite>- Joseph Mireku</cite>
       </blockquote>
@@ -537,9 +537,9 @@ function Reviews() {
         <q>
           For the longest time, I had been looking for healthy snack 
           options so my friend introduced me to juki nuts. I was like why not? 
-          Let me give it a try. And trust me when I say it's good! it's my go-to snack now. 
+          Let me give it a try. And trust me when I say it&apos;s good! it&apos;s my go-to snack now. 
           I love it so much especially the chilli flavor. 
-          it's going to be me and juki nuts in this hot Accra.
+          it&apos;s going to be me and juki nuts in this hot Accra.
 
         </q>
         <cite>- Anna</cite>
@@ -604,7 +604,7 @@ function Footer() {
       <div className="subscribe">
         <h2>Charge up your week with us</h2>
       
-        <p>Don't want to miss out on discounts, offers, tips and healthy takes from us?
+        <p>Don&apos;t want to miss out on discounts, offers, tips and healthy takes from us?
           Subscribe to our Newsletter.
         </p>
         <input type="text" placeholder="Enter Your Email" />
