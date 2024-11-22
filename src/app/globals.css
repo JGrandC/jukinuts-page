@@ -397,7 +397,7 @@ input[type="number"] {
 
   img {
     width: 100%;
-    max-width: 600px;
+    max-width: 500px;
     /* max-height: 400px; */
     object-fit: cover;
     /* display: none; */
@@ -960,4 +960,32 @@ input[type="number"] {
 
 .checkout-box p {
   margin-bottom: 1rem;
+}
+
+
+.currentBlog {
+  padding: 4rem 7.5vw;
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+  margin-top: 80px;
+}
+
+.currentBlog h2 {
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+.currentBlog img {
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+  border-radius: 1rem;
+  border: 1px solid var(--grey-05);
+}
+
+.currentBlog article {
+  font-size: 1rem;
+  padding: 0 1rem;
+  margin-bottom: 1rem;
+  text-align: justify;
 }

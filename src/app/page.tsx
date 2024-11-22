@@ -3,187 +3,9 @@
 import Image from "next/image";
 import Modal from "./components/Modal";
 import { useEffect, useState } from "react";
+import { useProductContext } from "@/context/productContext";
 
-const products = [
-  {
-    name: "Sea Salt Roasted Cashews",
-    image: "sea-salted-roasted-cashew.png",
-    category: [
-      {
-        size: "50g",
-        price: "10",
-        selected: false,
-      },
-    ]
-  },
-  {
-    name: "Sea Salt Roasted Cashews",
-    image: "sea-salted-roasted-cashew.png",
-    category: [
-      {
-        size: "150g",
-        price: "10",
-        selected: false,
-      },
-    ]
-  },
-  {
-    name: "Sea Salt Roasted Cashews",
-    image: "sea-salted-roasted-cashew.png",
-    category: [
-      {
-        size: "170g",
-        price: "10",
-        selected: false,
-      },
-    ]
-  },
-  {
-    name: "Sea Salt Roasted Cashews",
-    image: "sea-salted-620.png",
-    category: [
-      {
-        size: "300g",
-        price: "10",
-        selected: false,
-      },
-    ]
-  },
-  {
-    name: "Sea Salt Roasted Cashews",
-    image: "sea-salted-620.png",
-    category: [
-      {
-        size: "620",
-        price: "10",
-        selected: false,
-      },
-    ]
-  },
-  {
-    name: "Unsalted Roasted Cashews",
-    image: "unsalted-roasted-cashew.png",
-    category: [
-      {
-        size: "50g",
-        price: "10",
-        selected: false,
-      },
-    ]
-  },
-  {
-    name: "Unsalted Roasted Cashews",
-    image: "unsalted-roasted-cashew.png",
-    category: [
-      {
-        size: "150g",
-        price: "10",
-        selected: false,
-      },
-    ]
-  },
-  {
-    name: "Unsalted Roasted Cashews",
-    image: "unsalted-roasted-cashew.png",
-    category: [
-      {
-        size: "170g",
-        price: "10",
-        selected: false,
-      },
-    ]
-  },
-  {
-    name: "Unsalted Roasted Cashews",
-    image: "unsalted-300.png",
-    category: [
-      {
-        size: "300g",
-        price: "10",
-        selected: false,
-      },
-    ]
-  },
-  {
-    name: "Unsalted Roasted Cashews",
-    image: "unsalted-300.png",
-    category: [
-      {
-        size: "620g",
-        price: "10",
-        selected: false,
-      },
-    ]
-  },
-  {
-    name: "Chilli Roasted Cashews",
-    image: "chilli-roasted-cashew.png",
-    category: [
-      {
-        size: "50g",
-        price: "10",
-        selected: false,
-      },
-    ]
-  },
-  {
-    name: "Chilli Roasted Cashews",
-    image: "chilli-roasted-cashew.png",
-    category: [
-      {
-        size: "150g",
-        price: "10",
-        selected: false,
-      },
-    ]
-  },
-  {
-    name: "Chilli Roasted Cashews",
-    image: "chilli-roasted-cashew.png",
-    category: [
-      {
-        size: "170g",
-        price: "10",
-        selected: false,
-      },
-    ]
-  },
-  {
-    name: "Raw Roasted Cashews",
-    image: "chilli-roasted-cashew.png",
-    category: [
-      {
-        size: "1kg",
-        price: "10",
-        selected: true,
-      },
-    ]
-  },
-  {
-    name: "Raw Cashew Kernels",
-    image: "chilli-roasted-cashew.png",
-    category: [
-      {
-        size: "1kg",
-        price: "10",
-        selected: true,
-      },
-    ]
-  },
-  {
-    name: "Cashew Butter (comming soon)",
-    image: "chilli-roasted-cashew.png",
-    category: [
-      {
-        size: "--",
-        price: "--",
-        selected: true,
-      },
-    ]
-  },
-]
 
-const allProducts = [...new Set(products.map(product => product.name))];
 
 
 function Banner() {
@@ -237,6 +59,8 @@ function Banner() {
 }
 
 function Product({toggleModal, productGroup}:any) {
+  const {products} = useProductContext()
+
   return (
     <section className="products" id="products">
       <h4 className="name">{productGroup}</h4>
@@ -276,6 +100,10 @@ function Product({toggleModal, productGroup}:any) {
 }
 
 function AllProducts({toggleModal}:any) {
+  const {products} = useProductContext()
+  
+  const allProducts = [...new Set(products.map(product => product.name))];
+
   return (
     <div className="allProducts">
       <h2>Different flavours for different moods</h2>
@@ -391,7 +219,20 @@ function Blog() {
         <figure>
           <figcaption>
             <span>12 Dec, 2024</span>
-            <a href="#">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni eum saepe maxime.</a>
+            <a href="/blog/">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni eum saepe maxime.</a>
+            {/* <h4>Title</h4> */}
+          </figcaption>
+          <Image 
+            alt="jgrandcommodities"
+            src={`/img/mini_magic_blog.jpg`}
+            width={1000}
+            height={100}
+          />
+        </figure>
+        <figure>
+          <figcaption>
+            <span>12 Dec, 2024</span>
+            <a href="/blog/">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni eum saepe maxime.</a>
             {/* <h4>Title</h4> */}
           </figcaption>
           <Image 
@@ -404,20 +245,7 @@ function Blog() {
         <figure>
           <figcaption>
             <span>12 Dec, 2024</span>
-            <a href="#">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni eum saepe maxime.</a>
-            {/* <h4>Title</h4> */}
-          </figcaption>
-          <Image 
-            alt="jgrandcommodities"
-            src={`/img/cashews.JPG`}
-            width={1000}
-            height={100}
-          />
-        </figure>
-        <figure>
-          <figcaption>
-            <span>12 Dec, 2024</span>
-            <a href="#">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni eum saepe maxime.</a>
+            <a href="/blog/">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni eum saepe maxime.</a>
             {/* <h4>Title</h4> */}
           </figcaption>
           <Image 

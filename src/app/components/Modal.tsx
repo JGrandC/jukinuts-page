@@ -4,29 +4,57 @@ import { useEffect, useState } from "react"
 
 
 export default function Modal({toggleModal}:any) {
-    const [product, setProduct] = useState({
-        name: "",
-        image: "",
-        category: 
-          {
-            size: "",
-            price: "",
-            selected: false,
-          },
-      })
+    
 
-    useEffect(()=>{
-        setProduct({
-            name: "Chilli Roasted Cashews",
-            image: "chilli-roasted-cashew.png",
-            category:
-              {
-                size: "50g",
-                price: "10",
-                selected: false,
-              },
-          })
-    },[])
+  const [product, setProduct] = useState({
+    name: "",
+    image: "",
+    category: {
+      size: "",
+      price: 10,
+      qty: 1,
+      selected: false,
+    },
+  });
+
+  const [quantity, setQuantity] = useState<number>(1);
+  const [total, setTotal] = useState<number>(0);
+
+  // Initialize product and calculate total
+  useEffect(() => {
+    const initialProduct = {
+      name: "Chilli Roasted Cashews",
+      image: "chilli-roasted-cashew.png",
+      category: {
+        size: "50g",
+        price: 10,
+        qty: 1,
+        selected: false,
+      },
+    };
+    setProduct(initialProduct);
+    setQuantity(1);
+    setTotal(initialProduct.category.price * 1);
+  }, []);
+
+  // Increment function
+  const increment = () => {
+    setQuantity((prev) => {
+      const newQuantity = prev + 1;
+      setTotal(newQuantity * product.category.price); // Update total directly
+      return newQuantity;
+    });
+  };
+
+  // Decrement function
+  const decrement = () => {
+    setQuantity((prev) => {
+      const newQuantity = Math.max(1, prev - 1);
+      setTotal(newQuantity * product.category.price); // Update total directly
+      return newQuantity;
+    });
+  };
+
     return (
         <section className="modal show-hide" id="popModal">
             <div className="pop-box">
@@ -49,12 +77,20 @@ export default function Modal({toggleModal}:any) {
                         
                         <h2 className="prod-name" id="prod-name">{`${product.name} (${product.category.size})`}</h2>
                         <div className="count">
-                            <p className="price" id="prod-price">Gh&#8373; {product.category.price}</p>
+                            <p className="price" id="prod-price">Gh&#8373; {total}</p>
                             {/* <input type="number" name="quantity" className="qty" id="prod-qty" placeholder="0"/> */}
                             <div className="quantity">
-                                <button>-</button>
-                                <input type="number" min={1} placeholder="0"/>
-                                <button>+</button>
+                            <button onClick={decrement}>-</button>
+                                <input
+                                type="number"
+                                value={quantity}
+                                onChange={(e) => {
+                                    const newQuantity = Math.max(1, parseInt(e.target.value) || 1);
+                                    setQuantity(newQuantity);
+                                    setTotal(newQuantity * product.category.price); // Update total directly
+                                }}
+                                />
+                                <button onClick={increment}>+</button>
                             </div>
                         </div>
                         <span>Price is stated per box which contains 30 pouches for every box</span>
@@ -70,13 +106,17 @@ export default function Modal({toggleModal}:any) {
             
                             <label htmlFor="lastName">Last name <span className="imp">*</span></label>
                             <input type="text" name="LastName" id="lastName" placeholder="Last name" required/>
+
+                            <label htmlFor="country">Country <span className="imp">*</span></label>
+                            <input type="text" name="City" id="country" placeholder="Country" value={'Ghana'} required readOnly/>
+                            
+                            <label htmlFor="city">Town / City <span className="imp">*</span></label>
+                            <input type="text" name="City" id="city" placeholder="Town / City (Only within Ghana)" required/>
             
                             <label htmlFor="deliveryAddress">Street address <span className="imp">*</span></label>
                             <input type="text" name="DeliveryAddress" id="deliveryAddress" placeholder="Street address" required/>
             
-                            <label htmlFor="city">Town / City <span className="imp">*</span></label>
-                            <input type="text" name="City" id="city" placeholder="Town / City (Only within Ghana)" required/>
-            
+                            
                             <label htmlFor="phoneNumber">Phone number <span className="imp">*</span></label>
                             <input type="number" name="PhoneNumber" id="phoneNumber" placeholder="Phone number" required/>
                             
