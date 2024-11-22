@@ -24,6 +24,7 @@ export default function Header() {
           <li><a href="/#home">Home</a></li>
           <li><a href="/#products">Products</a></li>
           <li><a href="/#about">About</a></li>
+          <li><a href="/#blog">Blog</a></li>
           <li><a href="/#faq">Faq</a></li>
           <li><a href="/#reviews">Reviews</a></li>
           <li><a href="/#contact">Contact</a></li>
@@ -89,6 +90,7 @@ export default function Header() {
             <li><a href="/#home" onClick={toggleNav}>Home</a></li>
             <li><a href="/#products" onClick={toggleNav}>Products</a></li>
             <li><a href="/#about" onClick={toggleNav}>About</a></li>
+            <li><a href="/#blog" onClick={toggleNav}>Blog</a></li>
             <li><a href="/#faq" onClick={toggleNav}>Faq</a></li>
             <li><a href="/#reviews" onClick={toggleNav}>Reviews</a></li>
             <li><a href="/#contact"onClick={toggleNav}>Contact</a></li>

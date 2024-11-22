@@ -149,7 +149,7 @@ const products = [
     ]
   },
   {
-    name: "Raw Cashew Kernels",
+    name: "Raw Roasted Cashews",
     image: "chilli-roasted-cashew.png",
     category: [
       {
@@ -160,7 +160,7 @@ const products = [
     ]
   },
   {
-    name: "Roasted Cashews",
+    name: "Raw Cashew Kernels",
     image: "chilli-roasted-cashew.png",
     category: [
       {
@@ -219,10 +219,11 @@ function Banner() {
         <div>
           <h1>
             100% <br />
+            Natural, Crunchy & Yummy
             
-            <span style={{color: 'var(--green)'}}>Natural, </span>
+            {/* <span style={{color: 'var(--green)'}}>Natural, </span>
             <span style={{color: 'var(--blue)'}}>Crunchy & </span>
-            <span style={{color: 'var(--red)'}}>Yummy</span>
+            <span style={{color: 'var(--red)'}}>Yummy</span> */}
           </h1>
 
           <h4>
@@ -384,7 +385,7 @@ function Blog() {
   return (
     <section className="blog" id="blog">
 
-      <h2>Recent</h2>
+      <h2>Blog</h2>
 
       <div className="group">
         <figure>
