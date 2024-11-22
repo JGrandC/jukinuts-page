@@ -6,22 +6,18 @@ function Banner() {
       <div className="banner_img">
         <Image 
           alt="jgrandcommodities"
-          src={'/img/cashews.JPG'}
-          width={2000}
-          height={1000}
+          src={`/img/cashews.JPG`}
+          width={1000}
+          height={100}
         />
       </div>
 
       <div className="banner_txt">
         <div>
-          <h1>
+          <h1 style={{color: 'var(--blue)'}}>
             Our Story
             
           </h1>
-
-          <h4>
-            Eat healthy, Stay healthy
-          </h4>
         </div>
       </div>
     </div>
@@ -55,12 +51,18 @@ function About() {
         </a>
       </div>
 
-      <Image 
-        alt="jgrandcommodities"
-        src={`/img/cashews.JPG`}
-        width={1000}
-        height={100}
-      />
+      
+
+        <video
+          src="/story.mp4"
+          width="100%"
+          height="auto"
+          autoPlay
+          muted
+          loop
+          playsInline
+          controls={false}
+        />
     </section>
   )
 }

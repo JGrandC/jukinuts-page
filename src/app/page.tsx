@@ -183,13 +183,13 @@ const products = [
   },
 ]
 
+const allProducts = [...new Set(products.map(product => product.name))];
+
+
 function Banner() {
   const images = [
-    '/img/mini_magic-01.jpg',
     '/img/mini_magic-02.jpg',
-    '/img/mini_magic-03.jpg',
     '/img/mini_magic-04.jpg',
-    '/img/mini_magic-05.jpg',
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -235,14 +235,13 @@ function Banner() {
   )
 }
 
-function Product({toggleModal}:any) {
+function Product({toggleModal, productGroup}:any) {
   return (
     <section className="products" id="products">
-
-      <h2>Different flavours for different moods</h2>
+      <h4 className="name">{productGroup}</h4>
       <div className="prod-grid">
         {
-          products.map((product, index) => (
+          products.filter((product) => product.name === productGroup).map((product, index) => (
           <figure className="prod" key={index} onClick={toggleModal}>
 
             <div className="prod_categ">
@@ -263,16 +262,8 @@ function Product({toggleModal}:any) {
                   }
                 </ul>
 
-                {/* <div className="quantity">
-                  <button>-</button>
-                  <input type="number" min={1} placeholder="0"/>
-                  <button>+</button>
-                </div>
-
-                <button className="btn">Add</button> */}
               </figcaption>
             </div>
-            <h4 className="name">{product.name}</h4>
 
 
           </figure>
@@ -280,6 +271,20 @@ function Product({toggleModal}:any) {
         }
       </div>
     </section>
+  )
+}
+
+function AllProducts({toggleModal}:any) {
+  return (
+    <div className="allProducts">
+      <h2>Different flavours for different moods</h2>
+
+     {
+      allProducts.map((group, index) => (
+        <Product toggleModal={toggleModal} productGroup={group} key={index}/>
+      ))
+     }
+    </div>
   )
 }
 
@@ -374,6 +379,58 @@ function Process() {
   )
 }
 
+
+function Blog() {
+  return (
+    <section className="blog" id="blog">
+
+      <h2>Recent</h2>
+
+      <div className="group">
+        <figure>
+          <figcaption>
+            <span>12 Dec, 2024</span>
+            <a href="#">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni eum saepe maxime.</a>
+            {/* <h4>Title</h4> */}
+          </figcaption>
+          <Image 
+            alt="jgrandcommodities"
+            src={`/img/cashews.JPG`}
+            width={1000}
+            height={100}
+          />
+        </figure>
+        <figure>
+          <figcaption>
+            <span>12 Dec, 2024</span>
+            <a href="#">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni eum saepe maxime.</a>
+            {/* <h4>Title</h4> */}
+          </figcaption>
+          <Image 
+            alt="jgrandcommodities"
+            src={`/img/cashews.JPG`}
+            width={1000}
+            height={100}
+          />
+        </figure>
+        <figure>
+          <figcaption>
+            <span>12 Dec, 2024</span>
+            <a href="#">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni eum saepe maxime.</a>
+            {/* <h4>Title</h4> */}
+          </figcaption>
+          <Image 
+            alt="jgrandcommodities"
+            src={`/img/cashews.JPG`}
+            width={1000}
+            height={100}
+          />
+        </figure>
+      </div>
+    </section>
+  )
+}
+
 function Faq() {
   return (
     <section className="faq" id="faq">
@@ -438,11 +495,12 @@ export default function Home() {
   return (
     <div>
       <Banner/>
-      <Product toggleModal={toggleModal}/>
+      <AllProducts toggleModal={toggleModal}/>
       <About/>
       <Process/>
       <Faq/>
       <Reviews/>
+      <Blog/>
 
       {
         modal ? <Modal toggleModal={toggleModal}/> : undefined
