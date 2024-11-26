@@ -144,6 +144,8 @@ header {
   img {
     width: 100%;
     height: 100%;
+    min-height: 100%;
+    max-height: 100%;
     object-fit: cover;
     object-position: center center;
   }
@@ -155,7 +157,16 @@ header {
     left: 0;
     width: 100%;
     height: 100%;
-    /* background: linear-gradient(135deg, #4b4b4b28, rgba(96, 96, 96, 0.11)); */
+    min-height: 100%;
+    max-height: 100%;
+    background: linear-gradient(135deg, hsla(0, 0%, 21%, 0.2), rgba(66, 65, 65, 0.15));
+  }
+}
+
+.banner_half {
+  .banner_img {
+    height: 300px;
+    max-height: 300px;
   }
 }
 
@@ -206,6 +217,13 @@ header {
   h4 {
     font-size: 1.6rem;
     font-weight: 900;
+  }
+
+  .cta {
+    max-width: 200px;
+    background: var(--off-white);
+    color: var(--black);
+    margin-top: 1rem;
   }
 }
 
@@ -382,6 +400,10 @@ input[type="number"] {
   gap: 1rem;
 
   .text {
+    h1 {
+      font-size: 2.9rem;
+      font-weight: 900;
+    }
 
     h2 {
       font-size: 1.6rem;
@@ -412,7 +434,7 @@ input[type="number"] {
 }
 
 .process {
-  padding: 8rem 7.5vw;
+  padding: 4rem 7.5vw;
   width: 100%;
   margin-top: -4rem;
   padding-bottom: 12rem;
@@ -423,6 +445,18 @@ input[type="number"] {
     font-size: 1.6rem;
     font-weight: 900;
     margin-bottom: 1rem;
+  }
+}
+
+.process .infographics {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  
+  video {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 1rem;
   }
 }
 
@@ -441,15 +475,7 @@ input[type="number"] {
 
 .blog {
   padding: 4rem 7.5vw;
-  /* padding-bottom: 8rem;
-  border-top-left-radius: 4rem;
-  border-top-right-radius: 4rem;
-  width: 100%;
-  transform: translateY(-4rem); */
-  margin-top: -4rem;
   background: var(--off-white);
-
-  
 
   h2 {
     font-size: 1.6rem;
@@ -502,6 +528,8 @@ input[type="number"] {
 
 }
 
+
+
 .faq {
   padding: 4rem 7.5vw;
   padding-bottom: 0;
@@ -535,6 +563,7 @@ input[type="number"] {
   p {
     font-size: .875rem;
     display: block;
+    padding: 1rem 0;
   }
 
   &:nth-of-type(2) p {
@@ -607,7 +636,7 @@ input[type="number"] {
 
     figure {
       flex: 1;
-      padding: 2rem;
+      padding: 1rem;
       background: #fff;
       background: var(--grey-00);
   
@@ -618,9 +647,9 @@ input[type="number"] {
       gap: 1rem;
   
       img {
-        width: 120px;
-        height: 120px;
-        border-radius: 1rem;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
         border: 1px solid var(--grey-05);
         object-fit: cover;
       }
@@ -777,6 +806,10 @@ input[type="number"] {
   }
 
   .about {
+    flex-direction: column;
+  }
+
+  .process .infographics {
     flex-direction: column;
   }
 
@@ -965,10 +998,22 @@ input[type="number"] {
 
 .currentBlog {
   padding: 4rem 7.5vw;
+  margin-top: 80px;
+  border-top-left-radius: 4rem;
+  border-top-right-radius: 4rem;
+  width: 100%;
+  transform: translateY(-4rem);
+  margin-top: -4rem;
+  background: var(--off-white);  
+}
+
+.currentBlog article {
+  font-size: 1rem;
+  padding: 0 1rem;
+  text-align: justify;
   width: 100%;
   max-width: 800px;
   margin: auto;
-  margin-top: 80px;
 }
 
 .currentBlog h2 {
@@ -981,11 +1026,4 @@ input[type="number"] {
   margin-top: 1rem;
   border-radius: 1rem;
   border: 1px solid var(--grey-05);
-}
-
-.currentBlog article {
-  font-size: 1rem;
-  padding: 0 1rem;
-  margin-bottom: 1rem;
-  text-align: justify;
 }

@@ -1,6 +1,7 @@
 'use client'
 
 import Image from "next/image";
+import Link from "next/link";
 import Modal from "./components/Modal";
 import { useEffect, useState } from "react";
 import { useProductContext } from "@/context/productContext";
@@ -52,46 +53,64 @@ function Banner() {
             A healthier
             option for snack time
           </h4>
+          <Link href={'/#products'} className="cta">Shop Now</Link>
         </div>
       </div>
     </div>
   )
 }
 
-function Product({toggleModal, productGroup}:any) {
+function Product({image, size, price, id}:any) {
+  const {activeProd, toggleModal} = useProductContext()
+
+  const showDetails = (id:string) => {
+    toggleModal();
+    activeProd(id);
+  }
+
+  return (
+    // <figure className="prod" onClick={() => showDetails(id)}>
+    <figure className="prod" onClick={() => showDetails(id)}>
+      <div className="prod_categ">
+        <Image 
+          alt="jgrandcommodities"
+          src={`/img/product/${image}`}
+          width={1000}
+          height={100}
+        />
+
+        <figcaption className="feature">
+          
+          <ul className="category">
+            <li className="selected"><span>{size}</span> : <span>Gh&#8373; {price}</span></li>
+          </ul>
+
+        </figcaption>
+      </div>
+
+
+    </figure>
+  )
+}
+
+function ProductGroup({productGroup}:any) {
   const {products} = useProductContext()
+  const groupProduct = products.filter((product) => product.name === productGroup)
 
   return (
     <section className="products" id="products">
       <h4 className="name">{productGroup}</h4>
       <div className="prod-grid">
         {
-          products.filter((product) => product.name === productGroup).map((product, index) => (
-          <figure className="prod" key={index} onClick={toggleModal}>
-
-            <div className="prod_categ">
-              <Image 
-                alt="jgrandcommodities"
-                src={`/img/product/${product.image}`}
-                width={1000}
-                height={100}
-              />
-
-              <figcaption className="feature">
-                
-                <ul className="category">
-                  {
-                    product.category.map((variation, index) => (
-                      <li key={index} className={variation.selected ? 'selected' : undefined}><span>{variation.size}</span> : <span>Gh&#8373; {variation.price}</span></li>
-                    ))
-                  }
-                </ul>
-
-              </figcaption>
-            </div>
-
-
-          </figure>
+          groupProduct
+          .map((product, index) => (
+            <Product 
+              key={index} 
+              image={product.image} 
+              size={product.category.size} 
+              price={product.category.price}
+              id={product.id}
+            />
           ))
         }
       </div>
@@ -99,7 +118,7 @@ function Product({toggleModal, productGroup}:any) {
   )
 }
 
-function AllProducts({toggleModal}:any) {
+function AllProducts() {
   const {products} = useProductContext()
   
   const allProducts = [...new Set(products.map(product => product.name))];
@@ -110,7 +129,7 @@ function AllProducts({toggleModal}:any) {
 
      {
       allProducts.map((group, index) => (
-        <Product toggleModal={toggleModal} productGroup={group} key={index}/>
+        <ProductGroup productGroup={group} key={index}/>
       ))
      }
     </div>
@@ -157,53 +176,66 @@ function Process() {
   return (
     <section className="process">
       <h2>The journey of our cashews - from the farm to your table</h2>
-      <ul>
-        <li>
-          <span>1</span>
 
-          <p>
-            Our journey begins from smallholder farmers and 
-            cooperatives from the Bono region of Ghana, where our 
-            carefully selected orchards yield the finest cashew nuts. 
-            Traceability starts here, ensuring quality from the source.
-          </p>
-        </li>
-        <li>
-          <span>2</span>
+      <div className="infographics">
+        <video
+          src="/story.mp4"
+          width="100%"
+          height="auto"
+          autoPlay
+          muted
+          loop
+          playsInline
+          controls={false}
+        />
+        <ul>
+          <li>
+            <span>1</span>
 
-          <p>
-            At our processing facility, quality standards are maintained 
-            at every stage. We employ cutting-edge technology and expert 
-            craftsmanship to guarantee top-notch cashews for you
-          </p>
-        </li>
-        <li>
-          <span>3</span>
+            <p>
+              Our journey begins from smallholder farmers and 
+              cooperatives from the Bono region of Ghana, where our 
+              carefully selected orchards yield the finest cashew nuts. 
+              Traceability starts here, ensuring quality from the source.
+            </p>
+          </li>
+          <li>
+            <span>2</span>
 
-          <p>
-            Roasting is an art we take seriously. Our cashews undergo 
-            meticulous roasting to perfection, enhancing the flavor and texture that you love
-          </p>
-        </li>
-        <li>
-          <span>4</span>
+            <p>
+              At our processing facility, quality standards are maintained 
+              at every stage. We employ cutting-edge technology and expert 
+              craftsmanship to guarantee top-notch cashews for you
+            </p>
+          </li>
+          <li>
+            <span>3</span>
 
-          <p>
-            The final step in our process involves precision packaging. 
-            Each package is sealed to preserve freshness and flavor, 
-            with every batch made with lots of love!
-          </p>
-        </li>
-        <li>
-          <span>5</span>
+            <p>
+              Roasting is an art we take seriously. Our cashews undergo 
+              meticulous roasting to perfection, enhancing the flavor and texture that you love
+            </p>
+          </li>
+          <li>
+            <span>4</span>
 
-          <p>
-            From our farm to your hands, we ensure you receive premium 
-            cashews with a traceable journey you can trust. Enjoy the 
-            satisfaction of knowing where your cashews come from.
-          </p>
-        </li>
-      </ul>
+            <p>
+              The final step in our process involves precision packaging. 
+              Each package is sealed to preserve freshness and flavor, 
+              with every batch made with lots of love!
+            </p>
+          </li>
+          <li>
+            <span>5</span>
+
+            <p>
+              From our farm to your hands, we ensure you receive premium 
+              cashews with a traceable journey you can trust. Enjoy the 
+              satisfaction of knowing where your cashews come from.
+            </p>
+          </li>
+        </ul>
+      </div>
     </section>
   )
 }
@@ -315,16 +347,12 @@ function Reviews() {
 }
 
 export default function Home() {
-  const [modal, setModal] = useState(false)
-
-  const toggleModal = () => {
-    setModal((prev) => !prev);
-  };
+  const {modal} = useProductContext()
 
   return (
     <div>
       <Banner/>
-      <AllProducts toggleModal={toggleModal}/>
+      <AllProducts/>
       <About/>
       <Process/>
       <Faq/>
@@ -332,7 +360,7 @@ export default function Home() {
       <Blog/>
 
       {
-        modal ? <Modal toggleModal={toggleModal}/> : undefined
+        modal ? <Modal/> : undefined
       }
     </div>
   );

@@ -1,8 +1,23 @@
 import Image from "next/image"
 
+function Banner() {
+  return (
+    <div className="banner_half">
+      <div className="banner_img">
+        <Image 
+          alt="jgrandcommodities"
+          src={`/img/cashews.JPG`}
+          width={1000}
+          height={100}
+        />
+      </div>
+    </div>
+  )
+}
+
 function Blog() {
   return (
-    <section className="blog" id="blog">
+    <section className="blog">
 
       <h2>Recent</h2>
 
@@ -54,16 +69,15 @@ function Blog() {
 function CurrentBlog() {
   return (
     <section className="currentBlog">
-      <h2>Celebrating Farmers</h2>
-      <span>12 Dec, 2024</span>
-      <Image 
-        alt="jgrandcommodities"
-        src={`/img/mini_magic_blog.jpg`}
-        width={1000}
-        height={100}
-      />
-
       <article>
+        <h2>Celebrating Farmers</h2>
+        <span>12 Dec, 2024</span>
+        <Image 
+          alt="jgrandcommodities"
+          src={`/img/mini_magic_blog.jpg`}
+          width={1000}
+          height={100}
+        />
         At Juki Nuts, every bite of our premium roasted cashew nuts is a celebration of the hard work and dedication of farmers who make it all possible. Farmers are the backbone of our journey, and we&apos;re committed to honoring their role in bringing healthy and delicious cashews to your table.
 
         Our Mission: Bringing Flair to Healthy Snacking
@@ -102,16 +116,16 @@ function CurrentBlog() {
 
         From the farm to your hands, Juki Nuts delivers quality, flavor, and care in every bite.
       </article>
-      
     </section>
   )
 }
 
 export default function Page() {
   return (
-    <main>
+    <section>
+      <Banner/>
       <CurrentBlog/>
       <Blog/>
-    </main>
+    </section>
   )
 }
