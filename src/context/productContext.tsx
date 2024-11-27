@@ -1,13 +1,14 @@
-'use client'
+'use client';
+
 import React, { createContext, useContext, useState, ReactNode } from "react";
 
-// Define the shape of a product
+// Define the shape of a category
 interface Category {
   size: string;
   price: string;
-  selected: boolean;
 }
 
+// Define the shape of a product
 export interface Product {
   id: string;
   name: string;
@@ -15,13 +16,22 @@ export interface Product {
   category: Category;
 }
 
+// Define the shape of an item in the cart
+interface Item extends Product {
+  quantity: number;
+  total: number;
+}
+
 // Define context type
 interface ProductContextType {
   products: Product[];
+  cart: Item[];
   prodId: string;
-  activeProd: (prodId: string) => void; 
+  activeProd: (prodId: string) => void;
   modal: boolean;
   toggleModal: () => void;
+  addItem: (prodId: string) => void;
+  removeItem: (prodId: string) => void;
 }
 
 // Initialize ProductContext
@@ -36,9 +46,7 @@ const initialProducts: Product[] = [
     category: {
       size: "50g",
       price: "10",
-      selected: false,
     },
-  
   },
   {
     id: "0x2",
@@ -47,9 +55,7 @@ const initialProducts: Product[] = [
     category: {
       size: "150g",
       price: "10",
-      selected: false,
     },
-  
   },
   {
     id: "0x3",
@@ -58,7 +64,6 @@ const initialProducts: Product[] = [
     category: {
       size: "170g",
       price: "10",
-      selected: false,
     },
   },
   {
@@ -68,7 +73,6 @@ const initialProducts: Product[] = [
     category: {
       size: "300g",
       price: "10",
-      selected: false,
     },
   },
   {
@@ -76,10 +80,9 @@ const initialProducts: Product[] = [
     name: "Sea Salt Roasted Cashews",
     image: "sea-salted-620.png",
     category: {
-        size: "620",
-        price: "10",
-        selected: false,
-      },
+      size: "620g",
+      price: "10",
+    },
   },
   {
     id: "0x6",
@@ -88,7 +91,6 @@ const initialProducts: Product[] = [
     category: {
       size: "50g",
       price: "10",
-      selected: false,
     },
   },
   {
@@ -98,7 +100,6 @@ const initialProducts: Product[] = [
     category: {
       size: "150g",
       price: "10",
-      selected: false,
     },
   },
   {
@@ -108,7 +109,6 @@ const initialProducts: Product[] = [
     category: {
       size: "170g",
       price: "10",
-      selected: false,
     },
   },
   {
@@ -118,7 +118,6 @@ const initialProducts: Product[] = [
     category: {
       size: "300g",
       price: "10",
-      selected: false,
     },
   },
   {
@@ -128,7 +127,6 @@ const initialProducts: Product[] = [
     category: {
       size: "620g",
       price: "10",
-      selected: false,
     },
   },
   {
@@ -138,7 +136,6 @@ const initialProducts: Product[] = [
     category: {
       size: "50g",
       price: "10",
-      selected: false,
     },
   },
   {
@@ -148,7 +145,6 @@ const initialProducts: Product[] = [
     category: {
       size: "150g",
       price: "10",
-      selected: false,
     },
   },
   {
@@ -158,7 +154,6 @@ const initialProducts: Product[] = [
     category: {
       size: "170g",
       price: "10",
-      selected: false,
     },
   },
   {
@@ -168,7 +163,6 @@ const initialProducts: Product[] = [
     category: {
       size: "1kg",
       price: "10",
-      selected: true,
     },
   },
   {
@@ -178,33 +172,83 @@ const initialProducts: Product[] = [
     category: {
       size: "1kg",
       price: "10",
-      selected: true,
     },
   },
   {
     id: "0x16",
-    name: "Cashew Butter (comming soon)",
+    name: "Cashew Butter (coming soon)",
     image: "chilli-roasted-cashew.png",
     category: {
       size: "--",
       price: "--",
-      selected: true,
     },
   },
-]
+];
 
 // Context provider
 export const ProductProvider = ({ children }: { children: ReactNode }) => {
-  const [products, setProducts] = useState<Product[]>(initialProducts);
-  const [prodId, setProdId] = useState<string>('')
-  const [modal, setModal] = useState(false)
+  const [products] = useState<Product[]>(initialProducts);
+  const [prodId, setProdId] = useState<string>("");
+  const [modal, setModal] = useState(false);
+  const [cart, setCart] = useState<Item[]>([]);
 
+  // Toggle the modal state
   const toggleModal = () => setModal((prev) => !prev);
-  
-  const activeProd = (prodId:string) => setProdId(prodId)
+
+  // Save the active product ID
+  const activeProd = (prodId: string) => setProdId(prodId);
+
+  // Add item to the cart
+  const addItem = (prodId: string) => {
+    const selected = products.find((product) => product.id === prodId);
+
+    if (!selected) return; // If the product is not found, exit
+
+    setCart((prevCart) => {
+      // Check if the product is already in the cart
+      const existingItem = prevCart.find((item) => item.id === prodId);
+
+      if (existingItem) {
+        // Update the quantity and total if the item exists
+        return prevCart.map((item) =>
+          item.id === prodId
+            ? {
+                ...item,
+                quantity: item.quantity + 1,
+                total: (item.quantity + 1) * Number(item.category.price),
+              }
+            : item
+        );
+      } else {
+        // Add the new item to the cart
+        const newItem: Item = {
+          ...selected,
+          quantity: 1,
+          total: Number(selected.category.price),
+        };
+        return [...prevCart, newItem];
+      }
+    });
+  };
+
+  // Remove item from the cart
+  const removeItem = (prodId: string) => {
+    setCart((prevCart) => prevCart.filter((item) => item.id !== prodId));
+  };
 
   return (
-    <ProductContext.Provider value={{ products, prodId, activeProd, modal, toggleModal}}>
+    <ProductContext.Provider
+      value={{
+        products,
+        prodId,
+        activeProd,
+        modal,
+        toggleModal,
+        cart,
+        addItem,
+        removeItem,
+      }}
+    >
       {children}
     </ProductContext.Provider>
   );

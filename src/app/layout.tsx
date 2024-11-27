@@ -13,7 +13,7 @@ const nunito = localFont({
 
 export const metadata: Metadata = {
   title: "Juki Nuts",
-  description: "Natural,Crunchy & Yummy Cashews",
+  description: "Natural, Crunchy & Yummy Cashews",
 };
 
 export default function RootLayout({
