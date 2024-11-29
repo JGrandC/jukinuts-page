@@ -2,99 +2,110 @@
 import { useProductContext } from "@/context/productContext";
 import Image from "next/image"
 import { useEffect, useState } from "react"
-import {Product} from "@/context/productContext"
+import {Item} from "@/context/productContext"
 
+
+function CartItem({currentItem}: {currentItem: Item}) {
+    const { prodId, updateQuantity } = useProductContext();
+    
+    const handleQuantityChange = (quantity: number) => {
+        updateQuantity(prodId, Math.max(1, quantity));
+    };
+
+
+
+    return (
+        <div className="prod-details">
+        <h2 className="prod-name" id="prod-name">{`${currentItem.name} (${currentItem.category.size})`}</h2>
+        
+        <div className="count">
+            <p className="price" id="prod-price">Gh&#8373; {currentItem.total}</p>
+            <div className="quantity">
+                <button onClick={() => handleQuantityChange(currentItem.quantity - 1)}>-</button>
+                <input
+                    type="number"
+                    value={currentItem.quantity}
+                    onChange={(e) => handleQuantityChange(Number(e.target.value))}
+                />
+                <button onClick={() => handleQuantityChange(currentItem.quantity + 1)}>+</button>
+            </div>
+        </div>
+
+        <span>Price is stated per box which contains 30 pouches for every box</span>
+    </div>
+    )
+}
 
 export default function Modal() {
-  const {products, prodId, toggleModal} = useProductContext();
-  const [product, setProduct] = useState<Product | undefined>();
-  const [quantity, setQuantity] = useState<number>(1);
-  const [total, setTotal] = useState<number>(0);
+    const {prodId, activeProd, toggleModal, cart, removeItem} = useProductContext();
 
-  // Initialize product and calculate total
-  useEffect(() => {
-    const initProduct = products.find((prod) => prod.id === prodId);
-    setProduct(initProduct);
-
-    // Initialize quantity and total
-    if (initProduct) {
-      const initialPrice = parseInt(initProduct.category.price);
-      setQuantity(1);
-      setTotal(initialPrice);
+    const handleItemRomoval = (id: string) => {
+        removeItem(id)
+        const next = cart.length - 1
+        activeProd(cart[next].id)
     }
-  }, [products, prodId]);
 
-  // Increment function
-  const increment = () => {
-    if (!product) return;
-    const price = parseInt(product.category.price) || 0;
-    setQuantity((prev) => {
-      const newQuantity = prev + 1;
-      setTotal(newQuantity * price);
-      return newQuantity;
-    });
-  };
+    const grandTotal = cart.reduce((sum, item) => sum + item.total, 0);
 
-  
-
-  // Decrement function
-  const decrement = () => {
-    if (!product) return;
-    const price = parseInt(product.category.price) || 0;
-    setQuantity((prev) => {
-      const newQuantity = Math.max(1, prev - 1);
-      setTotal(newQuantity * price);
-      return newQuantity;
-    });
-  };
+    const delivery = 25;
 
     return (
         <>
         {
-            product &&
+            cart &&
             <section className="modal show-hide" id="popModal">
                 <div className="pop-box">
                     <div className="container">
                         <button className="pop-close" onClick={toggleModal}>
-                        <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 512.021 512.021">
-                        <g>
-                            <path d="M301.258,256.01L502.645,54.645c12.501-12.501,12.501-32.769,0-45.269c-12.501-12.501-32.769-12.501-45.269,0l0,0   L256.01,210.762L54.645,9.376c-12.501-12.501-32.769-12.501-45.269,0s-12.501,32.769,0,45.269L210.762,256.01L9.376,457.376   c-12.501,12.501-12.501,32.769,0,45.269s32.769,12.501,45.269,0L256.01,301.258l201.365,201.387   c12.501,12.501,32.769,12.501,45.269,0c12.501-12.501,12.501-32.769,0-45.269L301.258,256.01z"/>
-                        </g>
-                        </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 512.021 512.021">
+                            <g>
+                                <path d="M301.258,256.01L502.645,54.645c12.501-12.501,12.501-32.769,0-45.269c-12.501-12.501-32.769-12.501-45.269,0l0,0   L256.01,210.762L54.645,9.376c-12.501-12.501-32.769-12.501-45.269,0s-12.501,32.769,0,45.269L210.762,256.01L9.376,457.376   c-12.501,12.501-12.501,32.769,0,45.269s32.769,12.501,45.269,0L256.01,301.258l201.365,201.387   c12.501,12.501,32.769,12.501,45.269,0c12.501-12.501,12.501-32.769,0-45.269L301.258,256.01z"/>
+                            </g>
+                            </svg>
                         </button>
-                        <div className="prod-details">
-                            
-                            <Image 
-                                alt="jgrandcommodities"
-                                src={`/img/product/${product.image}`}
-                                width={1000}
-                                height={100}
-                            />
-                            
-                            <h2 className="prod-name" id="prod-name">{`${product.name} (${product.category.size})`}</h2>
-                            <div className="count">
-                                <p className="price" id="prod-price">Gh&#8373; {total}</p>
-                                {/* <input type="number" name="quantity" className="qty" id="prod-qty" placeholder="0"/> */}
-                                <div className="quantity">
-                                <button onClick={decrement}>-</button>
-                                    <input
-                                    type="number"
-                                    value={quantity}
-                                    onChange={(e) => {
-                                        if (!product) return;
-                                        const newQuantity = Math.max(1, parseInt(e.target.value) || 1);
-                                        setQuantity(newQuantity);
-                                        setTotal(newQuantity * parseInt(product.category.price)); // Update total directly
-                                    }}
-                                    />
-                                    <button onClick={increment}>+</button>
-                                </div>
-                            </div>
-                            <span>Price is stated per box which contains 30 pouches for every box</span>
+
+                        <div className="product-list">
+                            {
+                                cart.map((item) => (
+                                    <div className={`product-item ${item.id === prodId ? 'activeItem' : ''}`} key={item.id} onClick={()=>activeProd(item.id)}>
+                                        <Image 
+                                            alt="jgrandcommodities"
+                                            src={`/img/product/${item.image}`}
+                                            width={1000}
+                                            height={100}
+                                        />
+                                        
+                                        <button className="remove-item" onClick={() => handleItemRomoval(item.id)}>
+                                            <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 512.021 512.021">
+                                            <g>
+                                                <path d="M301.258,256.01L502.645,54.645c12.501-12.501,12.501-32.769,0-45.269c-12.501-12.501-32.769-12.501-45.269,0l0,0   L256.01,210.762L54.645,9.376c-12.501-12.501-32.769-12.501-45.269,0s-12.501,32.769,0,45.269L210.762,256.01L9.376,457.376   c-12.501,12.501-12.501,32.769,0,45.269s32.769,12.501,45.269,0L256.01,301.258l201.365,201.387   c12.501,12.501,32.769,12.501,45.269,0c12.501-12.501,12.501-32.769,0-45.269L301.258,256.01z"/>
+                                            </g>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                ))
+                            }
+                        </div>
+                        
+                        {
+                            cart.map(
+                                (item) => 
+                                item.id === prodId ? 
+                                <CartItem key={item.id} currentItem={item}/> : '')
+                        }
+
+                        <div className="grand-total">
+                            <ul>
+                                <li><span>Total: </span><span>Gh&#8373; {grandTotal}</span></li>
+                                <li><span>Delivery: </span><span>Gh&#8373; {delivery}</span></li>
+                                <br />
+                                <li><span>Total + Shipping: </span><span>Gh&#8373; {grandTotal + delivery}</span></li>  
+                            </ul>
+                            <h3></h3>
                         </div>
                     
                         <div className="cust-details">
-                            <h5>Fill your details to complete your order</h5>
+                            {/* <h5>Fill your details to complete your order</h5> */}
                             <br />
 
                             <form className="details" id="details">

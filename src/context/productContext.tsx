@@ -17,7 +17,7 @@ export interface Product {
 }
 
 // Define the shape of an item in the cart
-interface Item extends Product {
+export interface Item extends Product {
   quantity: number;
   total: number;
 }
@@ -32,6 +32,7 @@ interface ProductContextType {
   toggleModal: () => void;
   addItem: (prodId: string) => void;
   removeItem: (prodId: string) => void;
+  updateQuantity: (prodId: string, quantity: number) => void;
 }
 
 // Initialize ProductContext
@@ -231,6 +232,21 @@ export const ProductProvider = ({ children }: { children: ReactNode }) => {
     });
   };
 
+  // Update item in the cart
+  const updateQuantity = (prodId: string, quantity: number) => {
+    setCart((prevCart) =>
+      prevCart.map((item) =>
+        item.id === prodId
+          ? {
+              ...item,
+              quantity,
+              total: quantity * Number(item.category.price),
+            }
+          : item
+      )
+    );
+  };
+
   // Remove item from the cart
   const removeItem = (prodId: string) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== prodId));
@@ -247,6 +263,7 @@ export const ProductProvider = ({ children }: { children: ReactNode }) => {
         cart,
         addItem,
         removeItem,
+        updateQuantity
       }}
     >
       {children}

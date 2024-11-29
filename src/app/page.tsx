@@ -61,11 +61,12 @@ function Banner() {
 }
 
 function Product({image, size, price, id}:any) {
-  const {activeProd, toggleModal} = useProductContext()
+  const {activeProd, toggleModal, addItem} = useProductContext()
 
   const showDetails = (id:string) => {
     toggleModal();
     activeProd(id);
+    addItem(id)
   }
 
   return (
@@ -304,7 +305,7 @@ function Faq() {
           </p>
         </li>
         <li>
-          <span>Which store can shop Juki Nuts products</span>
+          <span>Which store can one shop Juki Nuts products</span>
           <p>You can shop for our products from the following stores: Shoprites, 
             Marina Mall, Tesbury&apos;s Legon City Mall, Valley View Rd Total-Oyibi, Amrahia Goil,
             The Blue Mall-Conference Center, Jungle Jims&apos;s Mart, Powerland Total, Haatso Goil,
