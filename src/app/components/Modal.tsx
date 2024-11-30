@@ -31,7 +31,9 @@ function CartItem({currentItem}: {currentItem: Item}) {
             </div>
         </div>
 
-        <span>Price is stated per box which contains 30 pouches for every box</span>
+        <span>Price is stated per box which contains 30 pouches for every box
+            <br />Product details, ingredients and composition.
+        </span>
     </div>
     )
 }
@@ -96,10 +98,10 @@ export default function Modal() {
 
                         <div className="grand-total">
                             <ul>
-                                <li><span>Total: </span><span>Gh&#8373; {grandTotal}</span></li>
-                                <li><span>Delivery: </span><span>Gh&#8373; {delivery}</span></li>
+                                <li><span>Sub-total: </span><strong>Gh&#8373; {grandTotal}</strong></li>
+                                <li><span>Delivery: </span><strong>Gh&#8373; {delivery}</strong></li>
                                 <br />
-                                <li><span>Total + Shipping: </span><span>Gh&#8373; {grandTotal + delivery}</span></li>  
+                                <li><span>Total: </span><strong>Gh&#8373; {grandTotal + delivery}</strong></li>  
                             </ul>
                             <h3></h3>
                         </div>

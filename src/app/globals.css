@@ -37,13 +37,13 @@
   padding: 0;
   box-sizing: border-box;
 
-  scrollbar-width: 0;
+  /* scrollbar-width: 0; */
 }
 
-*::-webkit-scrollbar {
+/* *::-webkit-scrollbar {
   display: none;
   width: 0;
-}
+} */
 
 .cta-link {
   display: flex;
@@ -892,7 +892,6 @@ input[type="number"] {
   height: auto;
   gap: .5rem;
   overflow-x: scroll;
-  cursor: pointer;
 }
 
 .product-item {
@@ -903,6 +902,7 @@ input[type="number"] {
   margin-bottom: 1rem;
   padding: .5rem;
   position: relative;
+  flex-shrink: 0;
 
 
   .remove-item {

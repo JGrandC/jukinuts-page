@@ -5,9 +5,7 @@ import Link from "next/link";
 import Modal from "./components/Modal";
 import { useEffect, useState } from "react";
 import { useProductContext } from "@/context/productContext";
-
-
-
+import { useBlogContext } from "@/context/blogContext";
 
 function Banner() {
   const images = [
@@ -174,6 +172,7 @@ function About() {
 }
 
 function Process() {
+
   return (
     <section className="process">
       <h2>The journey of our cashews - from the farm to your table</h2>
@@ -190,6 +189,7 @@ function Process() {
           controls={false}
         />
         <ul>
+
           <li>
             <span>1</span>
 
@@ -243,78 +243,86 @@ function Process() {
 
 
 function Blog() {
+  const {blogs} = useBlogContext()
+
   return (
     <section className="blog" id="blog">
 
       <h2>Blog</h2>
 
       <div className="group">
-        <figure>
-          <figcaption>
-            <span>12 Dec, 2024</span>
-            <a href="/blog/">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni eum saepe maxime.</a>
-            {/* <h4>Title</h4> */}
-          </figcaption>
-          <Image 
-            alt="jgrandcommodities"
-            src={`/img/mini_magic_blog.jpg`}
-            width={1000}
-            height={100}
-          />
-        </figure>
-        <figure>
-          <figcaption>
-            <span>12 Dec, 2024</span>
-            <a href="/blog/">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni eum saepe maxime.</a>
-            {/* <h4>Title</h4> */}
-          </figcaption>
-          <Image 
-            alt="jgrandcommodities"
-            src={`/img/cashews.JPG`}
-            width={1000}
-            height={100}
-          />
-        </figure>
-        <figure>
-          <figcaption>
-            <span>12 Dec, 2024</span>
-            <a href="/blog/">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni eum saepe maxime.</a>
-            {/* <h4>Title</h4> */}
-          </figcaption>
-          <Image 
-            alt="jgrandcommodities"
-            src={`/img/cashews.JPG`}
-            width={1000}
-            height={100}
-          />
-        </figure>
+        {
+          blogs.map((blog) => (
+          <figure key={blog.id}>
+            <figcaption>
+              <span>{blog.date}</span>
+              <a href={`/blog/${blog.id}`}>{blog.title}</a>
+              {/* <h4>Title</h4> */}
+            </figcaption>
+            <Image 
+              alt="jgrandcommodities"
+              src={`/img/${blog.image}`}
+              width={1000}
+              height={100}
+            />
+          </figure>
+          ))
+        }
       </div>
     </section>
   )
 }
 
 function Faq() {
+  const [faqIndex, setFaqIndex] = useState<number>(0)
+
+  const changeIndex = (index: number) => {
+    setFaqIndex(index)
+  }
+
+  interface Faq {
+    question: string;
+    answer: string;
+  }
+
+  const faqData: Faq[] = [
+    {
+      question: "Are the Cashews health for children",
+      answer: "Our Cashews does not contain any harmful material, it is well  processed and safe for consumption for everyone at any age."
+    },
+    {
+      question: "Which store can one shop Juki Nuts products",
+      answer: "You can shop for our products from the following stores: Shoprites, Marina Mall, Tesbury\'s Legon City Mall, Valley View Rd Total-Oyibi, Amrahia Goil, The Blue Mall-Conference Center, Jungle Jims\'s Mart, Powerland Total, Haatso Goil, Palm Wine Junction Shell-Labadi, AnC Shell-East legon",
+    },
+    {
+      question: "Can I get my product delivered to my doorstep",
+      answer: "You can receive any order placed on our website anywhere around Ghana",
+    },
+    {
+      question: "What\'s the return policy on a product I want to return",
+      answer: "You can return a product on purchase within 48 hours, with no damage to the packaging or the product itself i.e the cashews remain intact",
+    },
+    {
+      question: "What payment method do you accept",
+      answer: "We accept multiple payment method, you can use direct bank transfer, debit card or mobile money.",
+    },
+  ]
+
   return (
     <section className="faq" id="faq">
       <h2>Frequently Asked Questions</h2>
       <ul>
-        <li>
-          <span>Are the Cashews health for children</span>
-          <p>Our Cashews does not contain any harmful material, it is well  processed and safe for
-            consumption for everyone at any age.
-          </p>
-        </li>
-        <li>
-          <span>Which store can one shop Juki Nuts products</span>
-          <p>You can shop for our products from the following stores: Shoprites, 
-            Marina Mall, Tesbury&apos;s Legon City Mall, Valley View Rd Total-Oyibi, Amrahia Goil,
-            The Blue Mall-Conference Center, Jungle Jims&apos;s Mart, Powerland Total, Haatso Goil,
-            Palm Wine Junction Shell-Labadi, AnC Shell-East legon</p>
-        </li>
-        <li>
-          <span>Can I get my product delivered to my doorstep</span>
-          <p>You can receive any order placed on our website anywhere around Ghana</p>
-        </li>
+        {
+          faqData.map((faq, index) => (
+          <li key={index}>
+            <span onClick={()=>changeIndex(index)}>{faq.question}</span>
+            {
+              index === faqIndex &&
+              <p>{faq.answer}</p>
+            }
+          </li>
+          ))
+        }
       </ul>
     </section>
   )
