@@ -9,12 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@paystack/inline-js": "^2.22.1",
     "next": "15.0.3",
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106"
   },
   "devDependencies": {
     "@types/node": "^20",
+    "@types/paystack__inline-js": "^1.0.0",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",

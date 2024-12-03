@@ -1,9 +1,21 @@
 'use client'
 import { useProductContext } from "@/context/productContext";
 import Image from "next/image"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import {Item} from "@/context/productContext"
+import PaystackInline from "@paystack/inline-js";
 
+interface Customer {
+    firstName: string;
+    lastName: string;
+    emailAddress: string;
+    phoneNumber: string;
+    country: string;
+    state: string;
+    city: string;
+    street: string;
+    apartment: string;
+}
 
 function CartItem({currentItem}: {currentItem: Item}) {
     const { prodId, updateQuantity } = useProductContext();
@@ -40,6 +52,31 @@ function CartItem({currentItem}: {currentItem: Item}) {
 
 export default function Modal() {
     const {prodId, activeProd, toggleModal, cart, removeItem} = useProductContext();
+    const [customer, setCustomer] = useState<Customer>({
+        firstName: '',
+        lastName: '',
+        emailAddress: '',
+        phoneNumber: '',
+        country: 'Ghana',
+        state: '',
+        city: '',
+        street: '',
+        apartment: '',
+    });
+
+    const [validate, setValidate] = useState({
+        firstName: false,
+        lastName: false,
+        emailAddress: false,
+        phoneNumber: false,
+        country: true,
+        state: false,
+        city: false,
+        street: false,
+        apartment: false,
+    })
+
+    const [loading, setLoading] = useState<boolean>(false)
 
     const handleItemRomoval = (id: string) => {
         removeItem(id)
@@ -47,9 +84,210 @@ export default function Modal() {
         activeProd(cart[next].id)
     }
 
-    const grandTotal = cart.reduce((sum, item) => sum + item.total, 0);
+    const subTotal = cart.reduce((sum, item) => sum + item.total, 0);
 
-    const delivery = 25;
+    const deliveryFee = 25;
+
+    const total = subTotal + deliveryFee
+
+    const [notValid, setNotValid] = useState<boolean>(true)
+
+
+    const validateText = (): boolean => {
+        let isValid = true; // Tracks overall validation status
+        const newValidationState = { ...validate }; // Temporary object to store validation results
+    
+        for (let key in customer) {
+            if (customer[key as keyof Customer].trim() === '') {
+                newValidationState[key as keyof Customer] = false;
+                isValid = false; // At least one field is invalid
+            } else {
+                newValidationState[key as keyof Customer] = true;
+            }
+        }
+    
+        setValidate(newValidationState); // Update state after processing all fields
+        
+        return isValid; // Return the overall validation status
+    };    
+
+    
+    const checkout = () => {
+        // handleTransaction()
+        // handlePayment()
+        validateText() ? handlePayment() : setNotValid(true)
+    }
+
+    const handleTransaction = async () => {
+        try {
+            const metadata = {
+                custom_fields: [
+                  {
+                    display_name: 'Customer Name',
+                    variable_name: 'customer_name',
+                    value: `${customer.firstName} ${customer.lastName}`,
+                  },
+                  {
+                      display_name: 'Customer Email',
+                      variable_name: 'customer_email',
+                      value: customer.emailAddress,
+                  },
+                  {
+                      display_name: 'Customer Phone',
+                      variable_name: 'customer_phone',
+                      value: customer.phoneNumber,
+                  },
+                  {
+                      display_name: 'Customer Country',
+                      variable_name: 'customer_country',
+                      value: customer.country,
+                  },
+                  {
+                      display_name: 'Customer State',
+                      variable_name: 'customer_state',
+                      value: customer.state,
+                  },
+                  {
+                      display_name: 'Customer City',
+                      variable_name: 'customer_city',
+                      value: customer.city,
+                  },
+                  {
+                      display_name: 'Customer Street',
+                      variable_name: 'customer_street',
+                      value: customer.street,
+                  },
+                  {
+                      display_name: 'Customer Apartment',
+                      variable_name: 'customer_apartment',
+                      value: customer.apartment,
+                  },
+                  ...cart.map((item : {id: string, name: string, quantity: number, category: {size: string}, total: number}) => ({
+                      display_name: `Product #${item.id}`,
+                      variable_name: `Product_#${item.id}`,
+                      value: `${item.name} - Size: ${item.category.size}, Quantity: ${item.quantity}, Total: Gh ${item.total}`,
+                  }))
+                ],
+              }
+
+            setLoading(true);
+            const response = await fetch('/api/initiate-transaction', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email: customer.emailAddress, amount: total * 100, metadata }),
+              });
+            
+              if (!response.ok) {
+                throw new Error('Failed to initialize transaction');
+              }
+        
+              const data = await response.json();
+              const {access_code, reference, authorization_url} = data.data;
+
+              console.log(access_code, reference, authorization_url)
+
+              //   const popup = new PaystackPop();
+              //   popup.resumeTransaction(access_code)
+
+              window.location.href = authorization_url;
+            
+        } catch (error: any) {
+            console.error('Error initializing transaction:', error.message);
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    const handlePayment = () => {
+        const popup = new PaystackInline();
+    
+        popup.newTransaction({
+          key: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY || '', // Your Paystack public key
+          email: customer.emailAddress,
+          amount: total * 100,
+          currency: 'NGN',
+          metadata: {
+            custom_fields: [
+                {
+                    display_name: 'Customer Name',
+                    variable_name: 'customer_name',
+                    value: `${customer.firstName} ${customer.lastName}`,
+                },
+                {
+                    display_name: 'Customer Email',
+                    variable_name: 'customer_email',
+                    value: customer.emailAddress,
+                },
+                {
+                    display_name: 'Customer Phone',
+                    variable_name: 'customer_phone',
+                    value: customer.phoneNumber,
+                },
+                {
+                    display_name: 'Customer Country',
+                    variable_name: 'customer_country',
+                    value: customer.country,
+                },
+                {
+                    display_name: 'Customer State',
+                    variable_name: 'customer_state',
+                    value: customer.state,
+                },
+                {
+                    display_name: 'Customer City',
+                    variable_name: 'customer_city',
+                    value: customer.city,
+                },
+                {
+                    display_name: 'Customer Street',
+                    variable_name: 'customer_street',
+                    value: customer.street,
+                },
+                {
+                    display_name: 'Customer Apartment',
+                    variable_name: 'customer_apartment',
+                    value: customer.apartment,
+                },
+                ...cart.map((item : {id: string, name: string, quantity: number, category: {size: string}, total: number}) => ({
+                    display_name: `Product #${item.id}`,
+                    variable_name: `Product_#${item.id}`,
+                    value: `${item.name} - Size: ${item.category.size}, Quantity: ${item.quantity}, Total: Gh ${item.total}`,
+                }))
+            ],
+          },
+          onSuccess: (transaction: { reference: string }) => {
+            alert(`Transaction successful! OrderId: #${transaction.reference}`);
+            verifyTransaction(transaction.reference);
+            window.location.reload();
+          },
+          onCancel: () => {
+            alert('Transaction cancelled');
+            window.location.reload();
+          },
+          onError: (error) => {
+            alert("Error: " + error.message);
+            window.location.reload();
+          }
+        });
+      };
+
+      const verifyTransaction = async (reference: string) => {
+        try {
+          const response = await fetch(`/api/verify-transaction?reference=${reference}`);
+          if (!response.ok) throw new Error('Verification failed');
+          const data = await response.json();
+          console.log(data)
+        //   setVerificationResult(data);
+        } catch (error: any) {
+          console.error('Error verifying transaction:', error.message);
+        } finally {
+        //   setLoading(false);
+          console.log('Bravo...')
+        }
+      };
+      
 
     return (
         <>
@@ -98,10 +336,10 @@ export default function Modal() {
 
                         <div className="grand-total">
                             <ul>
-                                <li><span>Sub-total: </span><strong>Gh&#8373; {grandTotal}</strong></li>
-                                <li><span>Delivery: </span><strong>Gh&#8373; {delivery}</strong></li>
+                                <li><span>Sub-total: </span><strong>Gh&#8373; {subTotal}</strong></li>
+                                <li><span>Delivery: </span><strong>Gh&#8373; {deliveryFee}</strong></li>
                                 <br />
-                                <li><span>Total: </span><strong>Gh&#8373; {grandTotal + delivery}</strong></li>  
+                                <li><span>Total: </span><strong>Gh&#8373; {total}</strong></li>  
                             </ul>
                             <h3></h3>
                         </div>
@@ -112,32 +350,44 @@ export default function Modal() {
 
                             <form className="details" id="details">
                                 <label htmlFor="firstName">First name <span className="imp"><span className="imp">*</span></span></label>
-                                <input type="text" name="FirstName" id="firstName" placeholder="First name" required/>
-                
-                                <label htmlFor="lastName">Last name <span className="imp">*</span></label>
-                                <input type="text" name="LastName" id="lastName" placeholder="Last name" required/>
+                                <input required type="text" name="FirstName" id="firstName" placeholder="First name" value={customer.firstName} onChange={(e)=>setCustomer({...customer, firstName: e.target.value})}/>
 
-                                <label htmlFor="country">Country <span className="imp">*</span></label>
-                                <input type="text" name="City" id="country" placeholder="Country" value={'Ghana'} required readOnly/>
-                                
-                                <label htmlFor="city">Town / City <span className="imp">*</span></label>
-                                <input type="text" name="City" id="city" placeholder="Town / City (Only within Ghana)" required/>
-                
-                                <label htmlFor="deliveryAddress">Street address <span className="imp">*</span></label>
-                                <input type="text" name="DeliveryAddress" id="deliveryAddress" placeholder="Street address" required/>
-                
-                                
+                                <label htmlFor="lastName">Last name <span className="imp">*</span></label>
+                                <input required type="text" name="LastName" id="lastName" placeholder="Last name" value={customer.lastName} onChange={(e)=>setCustomer({...customer, lastName: e.target.value})}/>
+
                                 <label htmlFor="phoneNumber">Phone number <span className="imp">*</span></label>
-                                <input type="number" name="PhoneNumber" id="phoneNumber" placeholder="Phone number" required/>
+                                <input required type="number" name="PhoneNumber" id="phoneNumber" placeholder="Phone number" value={customer.phoneNumber} onChange={(e)=>setCustomer({...customer, phoneNumber: e.target.value})}/>
                                 
                                 <label htmlFor="emailAddress">e-mail address <span className="imp">*</span></label>
-                                <input type="email" name="emailAddress" id="emailAddress" placeholder="e-mail address" required/>                           
+                                <input required type="email" name="emailAddress" id="emailAddress" placeholder="e-mail address" value={customer.emailAddress} onChange={(e)=>setCustomer({...customer, emailAddress: e.target.value})}/>                           
+
+                                <label htmlFor="country">Country <span className="imp">*</span></label>
+                                <input required readOnly type="text" name="City" id="country" placeholder="Country" value={customer.country}/>
+                                
+                                <label htmlFor="city">State <span className="imp">*</span></label>
+                                <input required type="text" name="state" id="state" placeholder="State" value={customer.state} onChange={(e)=>setCustomer({...customer, state: e.target.value})}/>
+                
+                                <label htmlFor="city">Town / City <span className="imp">*</span></label>
+                                <input required type="text" name="city" id="city" placeholder="Town / City" value={customer.city} onChange={(e)=>setCustomer({...customer, city: e.target.value})}/>
+                
+                                <label htmlFor="street">Street <span className="imp">*</span></label>
+                                <input required type="text" name="street" id="street" placeholder="Street" value={customer.street} onChange={(e)=>setCustomer({...customer, street: e.target.value})}/>
+                
+                                <label htmlFor="apartment">Apartment <span className="imp">*</span></label>
+                                <input required type="text" name="apartment" id="apartment" placeholder="Apartment" value={customer.apartment} onChange={(e)=>setCustomer({...customer, apartment: e.target.value})}/>
+                
                             </form>
                             <div className="checkout-box">
-                                <p>Done filling your details?</p>
-                                <a className="cta" id="checkout" target="_blank">
-                                    <span>Checkout&nbsp;</span>
-                                    <i className="las la-arrow-circle-right"></i>
+                                <p>{notValid ? 'Please fill all your details' : 'Confirm your details before you proceed'}</p>
+                                <a className="cta" id="checkout" target="_blank" onClick={checkout}>
+                                    {
+                                        loading ?
+                                        <span>Loading...</span> :
+                                        <>
+                                            <span>Checkout - Gh&#8373; {total}</span>
+                                            <i className="las la-arrow-circle-right"></i>
+                                        </>
+                                    }
                                 </a>
                             </div>
                         </div>
