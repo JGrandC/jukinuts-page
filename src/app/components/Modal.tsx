@@ -4,6 +4,7 @@ import Image from "next/image"
 import { useState } from "react"
 import {Item} from "@/context/productContext"
 import PaystackInline from "@paystack/inline-js";
+import { useRouter } from "next/navigation";
 
 interface Customer {
     firstName: string;
@@ -51,6 +52,7 @@ function CartItem({currentItem}: {currentItem: Item}) {
 }
 
 export default function Modal() {
+    const router = useRouter()
     const {prodId, activeProd, toggleModal, cart, removeItem} = useProductContext();
     const [customer, setCustomer] = useState<Customer>({
         firstName: '',
@@ -191,7 +193,7 @@ export default function Modal() {
               //   const popup = new PaystackPop();
               //   popup.resumeTransaction(access_code)
 
-              window.location.href = authorization_url;
+              router.push(authorization_url)
             
         } catch (error: any) {
             console.error('Error initializing transaction:', error.message);
@@ -260,15 +262,15 @@ export default function Modal() {
           onSuccess: (transaction: { reference: string }) => {
             alert(`Transaction successful! OrderId: #${transaction.reference}`);
             verifyTransaction(transaction.reference);
-            window.location.reload();
+            router.refresh()
           },
           onCancel: () => {
             alert('Transaction cancelled');
-            window.location.reload();
+            router.refresh()
           },
           onError: (error) => {
             alert("Error: " + error.message);
-            window.location.reload();
+            router.refresh()
           }
         });
       };
