@@ -1,9 +1,8 @@
 'use client'
 import { useProductContext } from "@/context/productContext";
 import Image from "next/image"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import {Item} from "@/context/productContext"
-// import PaystackPop from "@paystack/inline-js";
 import { useRouter } from "next/navigation";
 
 interface Customer {
@@ -188,8 +187,6 @@ export default function Modal() {
               const data = await response.json();
               const {access_code, reference, authorization_url} = data.data;
 
-              console.log(access_code, reference, authorization_url)
-
               //   const popup = new PaystackPop();
               //   popup.resumeTransaction(access_code)
 
@@ -201,8 +198,6 @@ export default function Modal() {
             setLoading(false);
         }
     }
-    
-      
 
     return (
         <>
