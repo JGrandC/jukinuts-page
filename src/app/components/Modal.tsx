@@ -1,9 +1,9 @@
 'use client'
 import { useProductContext } from "@/context/productContext";
 import Image from "next/image"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import {Item} from "@/context/productContext"
-import PaystackPop from "@paystack/inline-js";
+// import PaystackPop from "@paystack/inline-js";
 import { useRouter } from "next/navigation";
 
 interface Customer {
@@ -117,7 +117,7 @@ export default function Modal() {
     const checkout = () => {
         // handleTransaction()
         // handlePayment()
-        validateText() ? handlePayment() : setNotValid(true)
+        validateText() ? handleTransaction() : setNotValid(true)
     }
 
     const handleTransaction = async () => {
@@ -201,97 +201,7 @@ export default function Modal() {
             setLoading(false);
         }
     }
-
-    const handlePayment = () => {
-        if (typeof window !== 'undefined') {
-            const popup = new PaystackPop();
-
-            popup.newTransaction({
-              key: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY || '', // Your Paystack public key
-              email: customer.emailAddress,
-              amount: total * 100,
-              currency: 'NGN',
-              metadata: {
-                custom_fields: [
-                    {
-                        display_name: 'Customer Name',
-                        variable_name: 'customer_name',
-                        value: `${customer.firstName} ${customer.lastName}`,
-                    },
-                    {
-                        display_name: 'Customer Email',
-                        variable_name: 'customer_email',
-                        value: customer.emailAddress,
-                    },
-                    {
-                        display_name: 'Customer Phone',
-                        variable_name: 'customer_phone',
-                        value: customer.phoneNumber,
-                    },
-                    {
-                        display_name: 'Customer Country',
-                        variable_name: 'customer_country',
-                        value: customer.country,
-                    },
-                    {
-                        display_name: 'Customer State',
-                        variable_name: 'customer_state',
-                        value: customer.state,
-                    },
-                    {
-                        display_name: 'Customer City',
-                        variable_name: 'customer_city',
-                        value: customer.city,
-                    },
-                    {
-                        display_name: 'Customer Street',
-                        variable_name: 'customer_street',
-                        value: customer.street,
-                    },
-                    {
-                        display_name: 'Customer Apartment',
-                        variable_name: 'customer_apartment',
-                        value: customer.apartment,
-                    },
-                    ...cart.map((item : {id: string, name: string, quantity: number, category: {size: string}, total: number}) => ({
-                        display_name: `Product #${item.id}`,
-                        variable_name: `Product_#${item.id}`,
-                        value: `${item.name} - Size: ${item.category.size}, Quantity: ${item.quantity}, Total: Gh ${item.total}`,
-                    }))
-                ],
-              },
-              onSuccess: (transaction: { reference: string }) => {
-                alert(`Transaction successful! OrderId: #${transaction.reference}`);
-                verifyTransaction(transaction.reference);
-                router.refresh()
-              },
-              onCancel: () => {
-                alert('Transaction cancelled');
-                router.refresh()
-              },
-              onError: (error) => {
-                alert("Error: " + error.message);
-                router.refresh()
-              }
-            });
-        }
     
-      };
-
-      const verifyTransaction = async (reference: string) => {
-        try {
-          const response = await fetch(`/api/verify-transaction?reference=${reference}`);
-          if (!response.ok) throw new Error('Verification failed');
-          const data = await response.json();
-          console.log(data)
-        //   setVerificationResult(data);
-        } catch (error: any) {
-          console.error('Error verifying transaction:', error.message);
-        } finally {
-        //   setLoading(false);
-          console.log('Bravo...')
-        }
-      };
       
 
     return (
