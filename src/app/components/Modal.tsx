@@ -177,7 +177,7 @@ export default function Modal() {
                 headers: {
                   'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ email: customer.emailAddress, amount: total, metadata }),
+                body: JSON.stringify({ email: customer.emailAddress, amount: total * 100, metadata }),
               });
             
               if (!response.ok) {
@@ -187,6 +187,7 @@ export default function Modal() {
               const data = await response.json();
               const {access_code, reference, authorization_url} = data.data;
 
+              console.log(access_code, reference)
               //   const popup = new PaystackPop();
               //   popup.resumeTransaction(access_code)
 
