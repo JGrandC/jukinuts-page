@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
         Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ email, amount, metadata }),
+      body: JSON.stringify({ email, amount: amount * 100, metadata }),
     });
 
     // Parse the Paystack API response

@@ -1,14 +1,3 @@
-//this script is for the navigation trigger control
-let navToggle = document.querySelector('#navToggle');
-let navClose = document.querySelector('#navClose');
-
-navToggle.addEventListener('click', () => {
-    document.querySelector('#mainNav').classList.toggle('show-hide');
-})
-
-navClose.addEventListener('click', () => {
-    document.querySelector('#mainNav').classList.add('show-hide');
-})
 
 
 //the product modal action, quantity selection, details filling and checkout script lies
@@ -130,12 +119,3 @@ products.forEach( product => {
         })
     })
 })
-
-
-
-
-//This is the script for the copywriting
-let date = new Date().getFullYear();
-document.querySelector('#copy').innerHTML = `
-    <p>&copy; ${date}, JGRANDCOMMODITIES</p>
-`

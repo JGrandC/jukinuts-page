@@ -177,7 +177,7 @@ export default function Modal() {
                 headers: {
                   'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ email: customer.emailAddress, amount: total * 100, metadata }),
+                body: JSON.stringify({ email: customer.emailAddress, amount: total, metadata }),
               });
             
               if (!response.ok) {
