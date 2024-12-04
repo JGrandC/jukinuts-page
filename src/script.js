@@ -11,40 +11,6 @@ navClose.addEventListener('click', () => {
 })
 
 
-
-
-//the slide control script lies under here
-const slides = Array.from(document.querySelectorAll('.slide'));
-let i = 0;
-let j = slides.length; 
-
-function slideShowRight() {
-    i++;
-    
-    if(i < j) {
-        slides.forEach((slide) => {
-            slide.classList.remove('active');
-        });
-
-        slides[i].classList.add('active');
-    } else {
-        return i = -1;
-    };
-};
-
-setInterval(slideShowRight, 5000);
-
-
-
-
-//this is for the product modal display control
-let popClose = document.querySelector('#popClose');
-let products = Array.from(document.querySelectorAll('.product-display'));
-
-popClose.addEventListener('click', () => {
-    document.querySelector('#popModal').classList.add('show-hide');
-})
-
 //the product modal action, quantity selection, details filling and checkout script lies
 //under here
 products.forEach( product => {
@@ -138,7 +104,7 @@ products.forEach( product => {
         
                                     //this will be a message
                                     alert('Transaction successful');
-                                    document.location.reload(true);
+                                    // document.location.reload(true);
                                     //window.location = "https://www.jgrandcommodities.com/product.html";
                                     // Make an AJAX call to your server with the reference to verify the transaction
         
