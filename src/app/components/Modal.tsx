@@ -186,7 +186,7 @@ export default function Modal() {
         
               const data = await response.json();
               if (data) {
-                console.log(data.access_code)
+                console.log(data)
                 if (data) {
                     const { default: PaystackPop } = await import("@paystack/inline-js"); // 👈 only import on client
                     const popup = new PaystackPop();
