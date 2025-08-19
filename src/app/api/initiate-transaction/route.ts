@@ -27,17 +27,16 @@ export async function POST(request: NextRequest) {
     const data = await response.json();
 
     // Check if the initialization was successful
-    if (response.ok && data.status) {
-      return NextResponse.json(
-        { message: "Transaction initialized successfully", data: data},
-        { status: 200}
-      )
-    } else {
+    if (!response.ok) {
       return NextResponse.json(
         { message: "Transaction initialization failed", error: data.message },
         { status: 400 }
       );
     }
+    return NextResponse.json(
+      { message: "Transaction initialized successfully", data: data},
+      { status: 200}
+    )
   } catch (error: any) {
     console.error("Error initializing transaction:", error.message);
 
