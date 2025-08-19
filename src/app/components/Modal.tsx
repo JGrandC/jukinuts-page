@@ -184,7 +184,7 @@ export default function Modal() {
                 throw new Error('Failed to initialize transaction');
               }
         
-              const data = await response.json();
+              const {data} = await response.json();
 
               if (data) {
                 console.log(data)
