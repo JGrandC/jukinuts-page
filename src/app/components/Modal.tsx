@@ -185,14 +185,14 @@ export default function Modal() {
               }
         
               const data = await response.json();
-              const {access_code, reference, authorization_url} = data.data;
-
-              console.log(access_code, reference)
-              //   const popup = new PaystackPop();
-              //   popup.resumeTransaction(access_code)
-
-              router.push(authorization_url)
-            
+              if (data) {
+                console.log(data.access_code)
+                if (data) {
+                    const { default: PaystackPop } = await import("@paystack/inline-js"); // 👈 only import on client
+                    const popup = new PaystackPop();
+                    popup.resumeTransaction(data.access_code);
+                }
+            }
         } catch (error: any) {
             console.error('Error initializing transaction:', error.message);
         } finally {
