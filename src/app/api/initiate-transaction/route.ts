@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
       );
     }
     return NextResponse.json(
-      { message: "Transaction initialized successfully", data: data},
+      { message: "Transaction initialized successfully", data: data.data},
       { status: 200}
     )
   } catch (error: any) {
