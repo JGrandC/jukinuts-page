@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
     // Check if the initialization was successful
     if (response.ok && data.status) {
       return NextResponse.json(
-        { message: "Transaction initialized successfully", data: data.data},
+        { message: "Transaction initialized successfully", data: data},
         { status: 200}
       )
     } else {
