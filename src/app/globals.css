@@ -275,8 +275,8 @@ header {
 }
 
 .prod-grid {
-  /* display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 4rem;
 
   display: flex;
@@ -292,8 +292,14 @@ header {
   /* background: var(--grey-05); */
   /* padding: 1rem; */
   /* gap: 1rem; */
-  min-width: 150px;
+  /* min-width: 150px; */
   cursor: pointer;
+  border: 1px solid var(--grey-05);
+  border-radius: 1rem;
+}
+
+.prod:last-of-type {
+  margin-right: auto;
 }
 
 .prod_categ {
@@ -308,6 +314,7 @@ header {
   width: auto;
   filter: drop-shadow(rgba(84, 84, 84, 0.35) 0px 15px 25px);
   margin: auto;
+  border-radius: 1rem;
 }
 
 .prod .feature {

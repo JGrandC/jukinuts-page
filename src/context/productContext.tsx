@@ -43,7 +43,7 @@ const initialProducts: Product[] = [
   {
     id: "0x1",
     name: "Sea Salt Roasted Cashews",
-    image: "sea-salted-roasted-cashew.png",
+    image: "Artboard_1.jpg",
     category: {
       size: "50g",
       price: "10",
@@ -52,7 +52,7 @@ const initialProducts: Product[] = [
   {
     id: "0x2",
     name: "Sea Salt Roasted Cashews",
-    image: "sea-salted-roasted-cashew.png",
+    image: "Artboard_1.jpg",
     category: {
       size: "150g",
       price: "10",
@@ -61,7 +61,7 @@ const initialProducts: Product[] = [
   {
     id: "0x3",
     name: "Sea Salt Roasted Cashews",
-    image: "sea-salted-roasted-cashew.png",
+    image: "Artboard_1.jpg",
     category: {
       size: "170g",
       price: "10",
@@ -70,7 +70,7 @@ const initialProducts: Product[] = [
   {
     id: "0x4",
     name: "Sea Salt Roasted Cashews",
-    image: "sea-salted-620.png",
+    image: "Artboard_1.jpg",
     category: {
       size: "300g",
       price: "10",
@@ -79,7 +79,7 @@ const initialProducts: Product[] = [
   {
     id: "0x5",
     name: "Sea Salt Roasted Cashews",
-    image: "sea-salted-620.png",
+    image: "Artboard_1.jpg",
     category: {
       size: "620g",
       price: "10",
@@ -88,7 +88,7 @@ const initialProducts: Product[] = [
   {
     id: "0x6",
     name: "Unsalted Roasted Cashews",
-    image: "unsalted-roasted-cashew.png",
+    image: "Artboard_2.jpg",
     category: {
       size: "50g",
       price: "10",
@@ -97,7 +97,7 @@ const initialProducts: Product[] = [
   {
     id: "0x7",
     name: "Unsalted Roasted Cashews",
-    image: "unsalted-roasted-cashew.png",
+    image: "Artboard_2.jpg",
     category: {
       size: "150g",
       price: "10",
@@ -106,7 +106,7 @@ const initialProducts: Product[] = [
   {
     id: "0x8",
     name: "Unsalted Roasted Cashews",
-    image: "unsalted-roasted-cashew.png",
+    image: "Artboard_2.jpg",
     category: {
       size: "170g",
       price: "10",
@@ -115,7 +115,7 @@ const initialProducts: Product[] = [
   {
     id: "0x9",
     name: "Unsalted Roasted Cashews",
-    image: "unsalted-300.png",
+    image: "Artboard_4.jpg",
     category: {
       size: "300g",
       price: "10",
@@ -124,7 +124,7 @@ const initialProducts: Product[] = [
   {
     id: "0x10",
     name: "Unsalted Roasted Cashews",
-    image: "unsalted-300.png",
+    image: "Artboard_4.jpg",
     category: {
       size: "620g",
       price: "10",
@@ -133,7 +133,7 @@ const initialProducts: Product[] = [
   {
     id: "0x11",
     name: "Chilli Roasted Cashews",
-    image: "chilli-roasted-cashew.png",
+    image: "Artboard_3.jpg",
     category: {
       size: "50g",
       price: "10",
@@ -142,7 +142,7 @@ const initialProducts: Product[] = [
   {
     id: "0x12",
     name: "Chilli Roasted Cashews",
-    image: "chilli-roasted-cashew.png",
+    image: "Artboard_3.jpg",
     category: {
       size: "150g",
       price: "10",
@@ -151,7 +151,7 @@ const initialProducts: Product[] = [
   {
     id: "0x13",
     name: "Chilli Roasted Cashews",
-    image: "chilli-roasted-cashew.png",
+    image: "Artboard_3.jpg",
     category: {
       size: "170g",
       price: "10",
@@ -160,7 +160,7 @@ const initialProducts: Product[] = [
   {
     id: "0x14",
     name: "Raw Roasted Cashews",
-    image: "chilli-roasted-cashew.png",
+    image: "Artboard_3.jpg",
     category: {
       size: "1kg",
       price: "10",
@@ -169,7 +169,7 @@ const initialProducts: Product[] = [
   {
     id: "0x15",
     name: "Raw Cashew Kernels",
-    image: "chilli-roasted-cashew.png",
+    image: "Artboard_3.jpg",
     category: {
       size: "1kg",
       price: "10",
@@ -178,7 +178,7 @@ const initialProducts: Product[] = [
   {
     id: "0x16",
     name: "Cashew Butter (coming soon)",
-    image: "chilli-roasted-cashew.png",
+    image: "Artboard_3.jpg",
     category: {
       size: "--",
       price: "--",
