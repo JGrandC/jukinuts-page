@@ -70,7 +70,7 @@ const initialProducts: Product[] = [
   {
     id: "0x4",
     name: "Sea Salt Roasted Cashews",
-    image: "Artboard_1.jpg",
+    image: "Artboard_5.jpg",
     category: {
       size: "300g",
       price: "10",
@@ -79,7 +79,7 @@ const initialProducts: Product[] = [
   {
     id: "0x5",
     name: "Sea Salt Roasted Cashews",
-    image: "Artboard_1.jpg",
+    image: "Artboard_5.jpg",
     category: {
       size: "620g",
       price: "10",
