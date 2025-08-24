@@ -19,7 +19,7 @@ function Banner() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 3000);
+    }, 5000);
 
     return () => clearInterval(interval); // Cleanup on unmount
   }, [images.length]);
@@ -30,7 +30,6 @@ function Banner() {
         <div>
           {/* <span>Super healthy snacks</span> */}
           <h1>
-             <br />
             <span>Super healthy cashews - </span>
             
             <span style={{color: 'var(--green)'}}>Natural, </span>
@@ -42,15 +41,14 @@ function Banner() {
             A healthier
             option for snack time
           </h4>
-          <br /><br />
           <Link href={'/#products'} className="cta">Shop Now</Link>
         </div>
       </div>
 
       <div className="banner_img">
+        {/* <div className="banner_div"></div>
         <div className="banner_div"></div>
-        <div className="banner_div"></div>
-        <div className="banner_div"></div>
+        <div className="banner_div"></div> */}
         <div className="slider" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
           {images.map((src, index) => (
             <div key={index} className="slide">
@@ -200,7 +198,7 @@ function Process() {
       </div>
 
       <div className="infographics">
-        <video
+        {/* <video
           src="/story.mp4"
           width="100%"
           height="auto"
@@ -209,6 +207,13 @@ function Process() {
           loop
           playsInline
           controls={false}
+        /> */}
+
+        <Image 
+          alt="jgrandcommodities"
+          src={`/img/mini_magic_blog.jpg`}
+          width={1000}
+          height={100}
         />
         <ul>
 
