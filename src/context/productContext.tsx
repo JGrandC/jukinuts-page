@@ -6,6 +6,7 @@ import React, { createContext, useContext, useState, ReactNode } from "react";
 interface Category {
   size: string;
   price: string;
+  packaging: string;
 }
 
 // Define the shape of a product
@@ -33,6 +34,7 @@ interface ProductContextType {
   addItem: (prodId: string) => void;
   removeItem: (prodId: string) => void;
   updateQuantity: (prodId: string, quantity: number) => void;
+  itemVariants: (name: string, packaging: string) => Product[];
 }
 
 // Initialize ProductContext
@@ -43,145 +45,111 @@ const initialProducts: Product[] = [
   {
     id: "0x1",
     name: "Sea Salt Roasted Cashews",
-    image: "Artboard_1.jpg",
+    image: "Artboard_1-removebg-preview.png",
     category: {
       size: "50g",
-      price: "10",
+      price: "15",
+      packaging: "pouch",
     },
   },
   {
     id: "0x2",
     name: "Sea Salt Roasted Cashews",
-    image: "Artboard_1.jpg",
+    image: "Artboard_1-removebg-preview.png",
     category: {
       size: "150g",
-      price: "10",
-    },
-  },
-  {
-    id: "0x3",
-    name: "Sea Salt Roasted Cashews",
-    image: "Artboard_1.jpg",
-    category: {
-      size: "170g",
-      price: "10",
+      price: "40",
+      packaging: 'pouch',
     },
   },
   {
     id: "0x4",
     name: "Sea Salt Roasted Cashews",
-    image: "Artboard_5.jpg",
+    image: "Artboard_5-removebg-preview.png",
     category: {
       size: "300g",
-      price: "10",
+      price: "75",
+      packaging: "jar"
     },
   },
   {
     id: "0x5",
     name: "Sea Salt Roasted Cashews",
-    image: "Artboard_5.jpg",
+    image: "Artboard_5-removebg-preview.png",
     category: {
       size: "620g",
-      price: "10",
+      price: "140",
+      packaging: "jar"
     },
   },
   {
     id: "0x6",
     name: "Unsalted Roasted Cashews",
-    image: "Artboard_2.jpg",
+    image: "Artboard_2-removebg-preview.png",
     category: {
       size: "50g",
-      price: "10",
+      price: "15",
+      packaging: "pouch"
     },
   },
   {
     id: "0x7",
     name: "Unsalted Roasted Cashews",
-    image: "Artboard_2.jpg",
+    image: "Artboard_2-removebg-preview.png",
     category: {
       size: "150g",
-      price: "10",
-    },
-  },
-  {
-    id: "0x8",
-    name: "Unsalted Roasted Cashews",
-    image: "Artboard_2.jpg",
-    category: {
-      size: "170g",
-      price: "10",
+      price: "40",
+      packaging: "pouch"
     },
   },
   {
     id: "0x9",
     name: "Unsalted Roasted Cashews",
-    image: "Artboard_4.jpg",
+    image: "Artboard_4-removebg-preview.png",
     category: {
       size: "300g",
-      price: "10",
+      price: "75",
+      packaging: "jar",
     },
   },
   {
     id: "0x10",
     name: "Unsalted Roasted Cashews",
-    image: "Artboard_4.jpg",
+    image: "Artboard_4-removebg-preview.png",
     category: {
       size: "620g",
-      price: "10",
+      price: "140",
+      packaging: "jar"
     },
   },
   {
     id: "0x11",
     name: "Chilli Roasted Cashews",
-    image: "Artboard_3.jpg",
+    image: "Artboard_3-removebg-preview.png",
     category: {
       size: "50g",
-      price: "10",
+      price: "15",
+      packaging: "pouch"
     },
   },
   {
     id: "0x12",
     name: "Chilli Roasted Cashews",
-    image: "Artboard_3.jpg",
+    image: "Artboard_3-removebg-preview.png",
     category: {
       size: "150g",
-      price: "10",
-    },
-  },
-  {
-    id: "0x13",
-    name: "Chilli Roasted Cashews",
-    image: "Artboard_3.jpg",
-    category: {
-      size: "170g",
-      price: "10",
-    },
-  },
-  {
-    id: "0x14",
-    name: "Raw Roasted Cashews",
-    image: "Artboard_3.jpg",
-    category: {
-      size: "1kg",
-      price: "10",
-    },
-  },
-  {
-    id: "0x15",
-    name: "Raw Cashew Kernels",
-    image: "Artboard_3.jpg",
-    category: {
-      size: "1kg",
-      price: "10",
+      price: "40",
+      packaging: "pouch"
     },
   },
   {
     id: "0x16",
-    name: "Cashew Butter (coming soon)",
-    image: "Artboard_3.jpg",
+    name: "Cashew Butter (Out of stock)",
+    image: "Cashew_butter-removebg-preview.png",
     category: {
       size: "--",
       price: "--",
+      packaging: "jar"
     },
   },
 ];
@@ -252,6 +220,10 @@ export const ProductProvider = ({ children }: { children: ReactNode }) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== prodId));
   };
 
+  const itemVariants = (name: string, packaging: string) => {
+    return products.filter(variant => variant.name == name && variant.category.packaging == packaging)
+  }
+
   return (
     <ProductContext.Provider
       value={{
@@ -263,7 +235,8 @@ export const ProductProvider = ({ children }: { children: ReactNode }) => {
         cart,
         addItem,
         removeItem,
-        updateQuantity
+        updateQuantity,
+        itemVariants,
       }}
     >
       {children}

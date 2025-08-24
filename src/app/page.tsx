@@ -26,7 +26,31 @@ function Banner() {
 
   return (
     <div className="banner" id="home">
+      <div className="banner_txt">
+        <div>
+          {/* <span>Super healthy snacks</span> */}
+          <h1>
+             <br />
+            <span>Super healthy cashews - </span>
+            
+            <span style={{color: 'var(--green)'}}>Natural, </span>
+            <span style={{color: 'var(--blue)'}}>Crunchy & </span>
+            <span style={{color: 'var(--red)'}}>Yummy!</span>
+          </h1>
+
+          <h4>
+            A healthier
+            option for snack time
+          </h4>
+          <br /><br />
+          <Link href={'/#products'} className="cta">Shop Now</Link>
+        </div>
+      </div>
+
       <div className="banner_img">
+        <div className="banner_div"></div>
+        <div className="banner_div"></div>
+        <div className="banner_div"></div>
         <div className="slider" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
           {images.map((src, index) => (
             <div key={index} className="slide">
@@ -35,31 +59,12 @@ function Banner() {
           ))}
         </div>
       </div>
-
-      <div className="banner_txt">
-        <div>
-          <h1>
-            100% <br />
-            Natural, Crunchy & Yummy
-            
-            {/* <span style={{color: 'var(--green)'}}>Natural, </span>
-            <span style={{color: 'var(--blue)'}}>Crunchy & </span>
-            <span style={{color: 'var(--red)'}}>Yummy</span> */}
-          </h1>
-
-          <h4>
-            A healthier
-            option for snack time
-          </h4>
-          <Link href={'/#products'} className="cta">Shop Now</Link>
-        </div>
-      </div>
     </div>
   )
 }
 
-function Product({image, size, price, id}:any) {
-  const {activeProd, toggleModal, addItem} = useProductContext()
+function Product({image, size, price, id, name, packaging}:any) {
+  const {activeProd, toggleModal, addItem, itemVariants} = useProductContext()
 
   const showDetails = (id:string) => {
     toggleModal();
@@ -67,10 +72,14 @@ function Product({image, size, price, id}:any) {
     addItem(id)
   }
 
+  const showVariants = (name: string, packaging: string) => {
+    const variants = itemVariants(name, packaging);
+    console.log(variants)
+  }
+
   return (
     // <figure className="prod" onClick={() => showDetails(id)}>
-    <figure className="prod" onClick={() => showDetails(id)}>
-      <div className="prod_categ">
+    <figure className="prod" onClick={() => showVariants(name, packaging)}>
         <Image 
           alt="jgrandcommodities"
           src={`/img/product/${image}`}
@@ -80,13 +89,12 @@ function Product({image, size, price, id}:any) {
 
         <figcaption className="feature">
           
-          <ul className="category">
-            <li className="selected"><span>{size}</span> : <span>Gh&#8373; {price}</span></li>
-          </ul>
+            <span>{name}</span> <span>({packaging})</span>
+          {/* <ul>
+            <li className="selected"><span>{name}</span> <span>Gh&#8373; {price}</span></li>
+          </ul> */}
 
         </figcaption>
-      </div>
-
 
     </figure>
   )
@@ -96,20 +104,30 @@ function ProductGroup({productGroup}:any) {
   const {products} = useProductContext()
   const groupProduct = products.filter((product) => product.name === productGroup)
 
+  const uniqueByPackaging = [
+    ...new Map(
+      groupProduct.map(p => [p.category.packaging, p])
+    ).values()
+  ];
+
+
   return (
     <section className="products" id="products">
       <h4 className="name">{productGroup}</h4>
       <div className="prod-grid">
         {
-          groupProduct
-          .map((product, index) => (
-            <Product 
-              key={index} 
-              image={product.image} 
-              size={product.category.size} 
-              price={product.category.price}
-              id={product.id}
-            />
+          uniqueByPackaging
+          .map((product, index) =>
+            (
+              <Product 
+                key={index} 
+                image={product.image} 
+                size={product.category.size} 
+                price={product.category.price}
+                id={product.id}
+                name={product.name}
+                packaging={product.category.packaging}
+              />
           ))
         }
       </div>
@@ -124,7 +142,9 @@ function AllProducts() {
 
   return (
     <div className="allProducts">
-      <h2>Different flavours for different moods</h2>
+      <div className="title">
+        <h2>Enjoy the variety of &apos;Juki Nuts Cashew flavours - brighten your mood and get crunchy!</h2>
+      </div>
 
      {
       allProducts.map((group, index) => (
@@ -139,7 +159,7 @@ function About() {
   return (
     <section className="about" id="about">
       <div className="text">
-        <h2>Eat healthy, Stay healthy.</h2>
+        <h1>Eat healthy, Stay healthy.</h1>
 
         <p>
           Juki nuts is about Introducing flare into 
@@ -175,7 +195,9 @@ function Process() {
 
   return (
     <section className="process">
-      <h2>The journey of our cashews - from the farm to your table</h2>
+      <div className="title">
+        <h2>The journey of our cashews - from the farm to your table</h2>
+      </div>
 
       <div className="infographics">
         <video
@@ -248,23 +270,23 @@ function Blog() {
   return (
     <section className="blog" id="blog">
 
-      <h2>Blog</h2>
+      <h2>Blogs &amp; Newsletter</h2>
 
       <div className="group">
         {
           blogs.map((blog) => (
           <figure key={blog.id}>
-            <figcaption>
-              <span>{blog.date}</span>
-              <a href={`/blog/${blog.id}`}>{blog.title}</a>
-              {/* <h4>Title</h4> */}
-            </figcaption>
             <Image 
               alt="jgrandcommodities"
               src={`/img/${blog.image}`}
               width={1000}
               height={100}
             />
+            <figcaption>
+              <span>{blog.date}</span>
+              <a href={`/blog/${blog.id}`}>{blog.title}</a>
+              {/* <h4>Title</h4> */}
+            </figcaption>
           </figure>
           ))
         }
@@ -331,26 +353,32 @@ function Faq() {
 function Reviews() {
   return (
     <section className="reviews" id="reviews">
-      <blockquote>
-        <q>
-          I tried cashew nuts for the first time with Jukinuts & 
-          it was an unexpectedly delightful experience. I had the 
-          sea salt flavor as well as the chilli, & couldn&apos;t get enough of them!
-          I&apos;ll be experimenting with these in my gari soakings over the weekend to see how it goes
-        </q>
-        <cite>- Joseph Mireku</cite>
-      </blockquote>
-      <blockquote>
-        <q>
-          For the longest time, I had been looking for healthy snack 
-          options so my friend introduced me to juki nuts. I was like why not? 
-          Let me give it a try. And trust me when I say it&apos;s good! it&apos;s my go-to snack now. 
-          I love it so much especially the chilli flavor. 
-          it&apos;s going to be me and juki nuts in this hot Accra.
+      <div className="title">
+        <h2>Real stories from our customers</h2>
+      </div>
 
-        </q>
-        <cite>- Anna</cite>
-      </blockquote>
+      <div className="allReviews">
+        <blockquote>
+          <q>
+            I tried cashew nuts for the first time with Jukinuts & 
+            it was an unexpectedly delightful experience. I had the 
+            sea salt flavor as well as the chilli, & couldn&apos;t get enough of them!
+            I&apos;ll be experimenting with these in my gari soakings over the weekend to see how it goes
+          </q>
+          <cite>- Joseph Mireku</cite>
+        </blockquote>
+        <blockquote>
+          <q>
+            For the longest time, I had been looking for healthy snack 
+            options so my friend introduced me to juki nuts. I was like why not? 
+            Let me give it a try. And trust me when I say it&apos;s good! it&apos;s my go-to snack now. 
+            I love it so much especially the chilli flavor. 
+            it&apos;s going to be me and juki nuts in this hot Accra.
+
+          </q>
+          <cite>- Anna</cite>
+        </blockquote>
+      </div>
     </section>
   )
 }
@@ -362,10 +390,10 @@ export default function Home() {
     <div>
       <Banner/>
       <AllProducts/>
-      <About/>
       <Process/>
-      <Faq/>
+      <About/>
       <Reviews/>
+      <Faq/>
       <Blog/>
 
       {

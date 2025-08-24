@@ -53,7 +53,7 @@ export default function Footer() {
       </div>
       
       <div className="subscribe">
-        <h2>Charge up your week with us</h2>
+        <h2>Crunch up your week with us</h2>
       
         <p>Don&apos;t want to miss out on discounts, offers, tips and healthy takes from us?
           Subscribe to our Newsletter.
