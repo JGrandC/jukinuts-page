@@ -221,9 +221,10 @@ export const ProductProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const itemVariants = (name: string, packaging: string) => {
-    return products.filter(variant => variant.name == name && variant.category.packaging == packaging)
+    return products.filter(variant => variant.name == name && variant.category.packaging == packaging);
   }
 
+  // const sizeVariants = 
   return (
     <ProductContext.Provider
       value={{

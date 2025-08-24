@@ -123,7 +123,6 @@ export default function Story() {
   return (
     <main>
       <About/>
-      <Team/>
     </main>
   )
 }

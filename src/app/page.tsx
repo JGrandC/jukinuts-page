@@ -6,6 +6,7 @@ import Modal from "./components/Modal";
 import { useEffect, useState } from "react";
 import { useProductContext } from "@/context/productContext";
 import { useBlogContext } from "@/context/blogContext";
+import { type Product } from "@/context/productContext";
 
 function Banner() {
   const images = [
@@ -30,7 +31,7 @@ function Banner() {
         <div>
           {/* <span>Super healthy snacks</span> */}
           <h1>
-            <span>Super healthy cashews - </span>
+            {/* <span>Super healthy cashews - </span> */}
             
             <span style={{color: 'var(--green)'}}>Natural, </span>
             <span style={{color: 'var(--blue)'}}>Crunchy & </span>
@@ -38,8 +39,7 @@ function Banner() {
           </h1>
 
           <h4>
-            A healthier
-            option for snack time
+            Super healthy cashews for your snack time
           </h4>
           <Link href={'/#products'} className="cta">Shop Now</Link>
         </div>
@@ -63,6 +63,8 @@ function Banner() {
 
 function Product({image, size, price, id, name, packaging}:any) {
   const {activeProd, toggleModal, addItem, itemVariants} = useProductContext()
+  const [variants, setVariants] = useState<Product[] | null>(null);
+  const [isVariant, setIsVariant] = useState<boolean>(false);
 
   const showDetails = (id:string) => {
     toggleModal();
@@ -72,28 +74,47 @@ function Product({image, size, price, id, name, packaging}:any) {
 
   const showVariants = (name: string, packaging: string) => {
     const variants = itemVariants(name, packaging);
-    console.log(variants)
+    setVariants(variants);
+  }
+
+  const toggleVariant = () => {
+    setIsVariant(!isVariant);
+    showVariants(name, packaging)
   }
 
   return (
     // <figure className="prod" onClick={() => showDetails(id)}>
-    <figure className="prod" onClick={() => showVariants(name, packaging)}>
-        <Image 
-          alt="jgrandcommodities"
-          src={`/img/product/${image}`}
-          width={1000}
-          height={100}
-        />
+      <figure className="prod" onClick={toggleVariant}>
+      <Image 
+        alt="jgrandcommodities"
+        src={`/img/product/${image}`}
+        width={1000}
+        height={100}
+      />
 
-        <figcaption className="feature">
-          
-            <span>{name}</span> <span>({packaging})</span>
-          {/* <ul>
-            <li className="selected"><span>{name}</span> <span>Gh&#8373; {price}</span></li>
-          </ul> */}
+      <figcaption className="feature">
+        
+          <span>{name}</span> <span>({packaging})</span>
+            {
+              isVariant && variants ?
+              <div className="category">
+                <span>Choose size:</span>
+                <ul>
+                  {
 
-        </figcaption>
+                    variants.map(variant => (
+                      <li className="selected" onClick={
+                        () => Number(variant.category.price) > 0 ? showDetails(variant.id) : undefined
+                      }><span>{variant.category.size}</span>/<span>Gh&#8373; {variant.category.price}</span></li>
+                    ))
+                  }
+                </ul>
+              </div>
+              :
+              null
+            }
 
+      </figcaption>
     </figure>
   )
 }
