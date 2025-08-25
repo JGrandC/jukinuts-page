@@ -309,9 +309,8 @@ function Blog() {
               height={100}
             />
             <figcaption>
-              <span>{blog.date}</span>
               <a href={`/blog/${blog.id}`}>{blog.title}</a>
-              {/* <h4>Title</h4> */}
+              <span>{blog.date}</span>
             </figcaption>
           </figure>
           ))
@@ -335,23 +334,23 @@ function Faq() {
 
   const faqData: Faq[] = [
     {
-      question: "Are the Cashews health for children",
+      question: "Are the Cashews healthy for children?",
       answer: "Our Cashews does not contain any harmful material, it is well  processed and safe for consumption for everyone at any age."
     },
     {
-      question: "Which store can one shop Juki Nuts products",
+      question: "Which store can one shop Juki Nuts products?",
       answer: "You can shop for our products from the following stores: Shoprites, Marina Mall, Tesbury\'s Legon City Mall, Valley View Rd Total-Oyibi, Amrahia Goil, The Blue Mall-Conference Center, Jungle Jims\'s Mart, Powerland Total, Haatso Goil, Palm Wine Junction Shell-Labadi, AnC Shell-East legon",
     },
     {
-      question: "Can I get my product delivered to my doorstep",
+      question: "Can I get my product delivered to my doorstep?",
       answer: "You can receive any order placed on our website anywhere around Ghana",
     },
     {
-      question: "What\'s the return policy on a product I want to return",
+      question: "What\'s the return policy on a product I want to return?",
       answer: "You can return a product on purchase within 48 hours, with no damage to the packaging or the product itself i.e the cashews remain intact",
     },
     {
-      question: "What payment method do you accept",
+      question: "What payment method do you accept?",
       answer: "We accept multiple payment method, you can use direct bank transfer, debit card or mobile money.",
     },
   ]

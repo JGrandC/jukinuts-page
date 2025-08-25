@@ -35,7 +35,7 @@ export default function Footer() {
                 Available Monday - Saturday
                 09:00 am - 06:00 pm
               </p>
-              <a href="mailto:jgrandcommodities@gmail.com">jgrandcommodities@gmail.com</a>
+              <a href="mailto:jgrandcteam@gmail.com">jgrandcteam@gmail.com</a>
             </div>
           </li>
           <li>
