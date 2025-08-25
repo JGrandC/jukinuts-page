@@ -301,6 +301,7 @@ function Blog() {
       <div className="group">
         {
           blogs.map((blog) => (
+          <a href={`/blog/${blog.id}`}>
           <figure key={blog.id}>
             <Image 
               alt="jgrandcommodities"
@@ -309,10 +310,11 @@ function Blog() {
               height={100}
             />
             <figcaption>
-              <a href={`/blog/${blog.id}`}>{blog.title}</a>
+              <h4>{blog.title}</h4>
               <span>{blog.date}</span>
             </figcaption>
           </figure>
+          </a>
           ))
         }
       </div>

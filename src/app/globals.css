@@ -207,7 +207,7 @@ header {
   display: grid;
   align-items: center;
   padding: 2rem 7.5vw;
-  /* text-shadow: 0px 0px 1px #171717; */
+  text-shadow: 0px 0px 1px #090200;
   opacity: .9;
 
   &::before {
@@ -541,8 +541,11 @@ input[type="number"] {
     gap: 1rem;
     margin-bottom: 1rem;
 
-    figure {
+    a {
       flex: 1;
+    }
+    figure {
+      width: 100%;
       /* padding: 2rem; */
       background: var(--grey-00);
       border: 1px solid var(--grey-05);
@@ -571,11 +574,11 @@ input[type="number"] {
           font-weight: 900;
         }
 
-        a {
+        /* a {
           font-size: .875rem;
           font-weight: bold;
           border-bottom: none;
-        }
+        } */
       }
     }
   }
