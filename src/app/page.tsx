@@ -46,7 +46,7 @@ function Banner() {
               <span>Shop Now</span>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" ><g><path d="M0,12A12,12,0,1,0,12,0,12.013,12.013,0,0,0,0,12Zm21,0a9,9,0,1,1-9-9A9.011,9.011,0,0,1,21,12Z"/><path d="M12.815,8.551,14.731,10.5H6.5a1.5,1.5,0,0,0,0,3h8.231l-1.916,1.949a1.5,1.5,0,1,0,2.14,2.1L18,14.45a3.524,3.524,0,0,0,0-4.9l-3.048-3.1a1.5,1.5,0,1,0-2.14,2.1Z"/></g></svg>
             </Link>
-            <Link href={'/story'} className="cta">
+            <Link href={'/story'} className="cta" style={{background: 'var(--off-white)', border: '1px solid var(--brand-orange)', color: 'var(--brand-orange)', fill: 'var(--brand-orange)'}}>
               <span>Learn More</span>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" ><g><path d="M0,12A12,12,0,1,0,12,0,12.013,12.013,0,0,0,0,12Zm21,0a9,9,0,1,1-9-9A9.011,9.011,0,0,1,21,12Z"/><path d="M12.815,8.551,14.731,10.5H6.5a1.5,1.5,0,0,0,0,3h8.231l-1.916,1.949a1.5,1.5,0,1,0,2.14,2.1L18,14.45a3.524,3.524,0,0,0,0-4.9l-3.048-3.1a1.5,1.5,0,1,0-2.14,2.1Z"/></g></svg>
             </Link>
@@ -76,22 +76,22 @@ function Highlight() {
       <div>
         <svg></svg>
         <h4 className="font-bold">Farm-to-Tabe</h4>
-        <span>Small description</span>
+        <span>Source directly from farms and processed locally</span>
       </div>
       <div className="text-right">
         <svg></svg>
         <h4 className="font-bold">Zero Waste</h4>
-        <span>Small description</span>
+        <span>Reusable packaging and proper transportation</span>
       </div>
       <div>
         <svg></svg>
         <h4 className="font-bold">Healthy Snacking</h4>
-        <span>Small description</span>
+        <span>Rich in essential nutrients, protein and fiber</span>
       </div>
       <div className="text-right">
         <svg></svg>
         <h4 className="font-bold">Global Quality</h4>
-        <span>Small description</span>
+        <span>Super durable packaging for long shelf life</span>
       </div>
     </div>
   )
@@ -139,7 +139,7 @@ function Product({image, size, price, id, name, packaging}:any) {
                   {
 
                     variants.map(variant => (
-                      <li className="selected" onClick={
+                      <li className="selected" key={variant.id} onClick={
                         () => Number(variant.category.price) > 0 ? showDetails(variant.id) : undefined
                       }><span>{variant.category.size}</span>/<span>Gh&#8373; {variant.category.price}</span></li>
                     ))
@@ -167,7 +167,7 @@ function ProductGroup({productGroup}:any) {
 
 
   return (
-    <section className="products" id="products">
+    <section className="products" >
       <h4 className="name">{productGroup}</h4>
       <div className="prod-grid">
         {
@@ -196,7 +196,7 @@ function AllProducts() {
   const allProducts = [...new Set(products.map(product => product.name))];
 
   return (
-    <div className="allProducts">
+    <div className="allProducts" id="products">
       <div className="title">
         <h1>Our Products</h1>
         <h2>Enjoy the variety of &apos;Juki Nuts Cashew flavours - brighten your mood and get crunchy!</h2>
@@ -215,13 +215,20 @@ function About() {
   return (
     <section className="about" id="about">
       <div className="text">
-        <h1>Eat healthy, Stay healthy.</h1>
+        <h1>Our Story</h1>
+        <h2>Eat healthy, Stay healthy.</h2>
 
         <p>
-          To ensure healthy consumption, Juki nuts is
-          introducing new flavours of roasted cashew nuts to spice up its taste and make it more palatable.
+          Juki nuts is about Introducing flare into 
+          the boring cashew nuts through our captivating packaging 
+          and introducing new flavours of roasted cashew nuts.
 
-          with grand packaging made with durable and non carcinogenic materials.
+          Introducing grand packaging with durable and non carcinogenic materials.
+
+          Flavouring our roasted cashew nuts to spice up its taste and make it more palatable.
+
+          Maintaining access to our products from anywhere through our well developed user experience model.
+          Establishing relationship with our customers and expanding our community to provide more better products.
         </p>
 
         <a href="/story" className="cta-link">
@@ -322,7 +329,7 @@ function Process2() {
   return (
     <section className="process">
       <div className="title">
-        <h2>Juki nut cashews - <br />Safe for everyone</h2>
+        <h2>Juki nuts - <br />cashews for everyone!</h2>
       </div>
 
       <div className="infographics">
@@ -527,15 +534,13 @@ function Note() {
         <h2>Our Impact</h2>
 
         <p>
-          Juki nuts is about Introducing flare into 
-          the boring cashew nuts through our captivating packaging 
-          and introducing new flavours of roasted cashew nuts,
-
-          Maintaining access to our products from anywhere through our well developed user experience model,
-          Establishing relationship with our customers and expanding our community to provide more better products.
+          At Juki nuts, we&apos;re passionate about more than just delivering delicious and nutritious cashew nuts.
+          We&apos;re committed to making a positive impact on the communities we serve. By sourcing our products from local farmers in Ghana and employing
+          young individuals, we&apos;re helping to drive economic growth, promote social development, and foster sustainable practices. Here&apos;s a look at the impact we&apos;re making:
+        
         </p>
 
-        <a href="/story" className="cta-link">
+        <a href="/impact" className="cta-link">
           <span>Learn More</span>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" ><g><path d="M0,12A12,12,0,1,0,12,0,12.013,12.013,0,0,0,0,12Zm21,0a9,9,0,1,1-9-9A9.011,9.011,0,0,1,21,12Z"/><path d="M12.815,8.551,14.731,10.5H6.5a1.5,1.5,0,0,0,0,3h8.231l-1.916,1.949a1.5,1.5,0,1,0,2.14,2.1L18,14.45a3.524,3.524,0,0,0,0-4.9l-3.048-3.1a1.5,1.5,0,1,0-2.14,2.1Z"/></g></svg>
         </a>
@@ -562,7 +567,7 @@ function Note2() {
           We also add natural flavours to spice up your taste without causing any health damage.
         </p>
 
-        <a href="/story" className="cta-link">
+        <a href="/#products" className="cta-link">
           <span>Shop Now</span>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" ><g><path d="M0,12A12,12,0,1,0,12,0,12.013,12.013,0,0,0,0,12Zm21,0a9,9,0,1,1-9-9A9.011,9.011,0,0,1,21,12Z"/><path d="M12.815,8.551,14.731,10.5H6.5a1.5,1.5,0,0,0,0,3h8.231l-1.916,1.949a1.5,1.5,0,1,0,2.14,2.1L18,14.45a3.524,3.524,0,0,0,0-4.9l-3.048-3.1a1.5,1.5,0,1,0-2.14,2.1Z"/></g></svg>
         </a>

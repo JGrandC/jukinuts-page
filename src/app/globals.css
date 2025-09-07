@@ -51,7 +51,7 @@
 } */
 
 .cta-link {
-  padding: 1.2rem 1rem;
+  padding: 1rem;
   font-size: 1rem;
   font-weight: bold;
   border-radius: 1000px;
@@ -66,7 +66,7 @@
 }
 
 .btn, .cta {
-  padding: 1.2rem 1rem;
+  padding: 1rem;
   font-size: 1rem;
   font-weight: bold;
   border-radius: 1000px;
@@ -80,6 +80,8 @@
   vertical-align: middle;
   cursor: pointer;
 }
+
+
 
 svg {
   flex-shrink: 0;
@@ -279,7 +281,7 @@ header {
   margin-bottom: 1rem;
   background: var(--brand-orange);
   color: var(--off-white);
-  padding: .75rem;
+  padding: .5rem;
   border-radius: 1000px;
   display: inline-block;
   z-index: 10;
@@ -490,13 +492,18 @@ input[type="number"] {
   margin-bottom: 1rem;
 
   span {
-    font-size: 1.2rem;
-    font-weight: bold;
+    font-size: 1.5rem;
+    font-weight: 900;
   }
 }
 
+.infographics h4 {
+  font-weight: 900;
+  font-size: 1.2rem;
+}
+
 .about {
-  padding: 8rem 7.5vw;
+  padding: 4rem 7.5vw;
   border-top-left-radius: 4rem;
   border-top-right-radius: 4rem;
   width: 100%;
@@ -649,7 +656,7 @@ input[type="number"] {
 }
 
 .process {
-  padding: 8rem 7.5vw;
+  padding: 4rem 7.5vw;
   width: 100%;
   /* margin-top: -8rem; */
   /* padding-bottom: 12rem; */
@@ -738,8 +745,8 @@ input[type="number"] {
   margin-top: -4rem; */
   background: var(--off-white);
   background: var(--off-white);
-
-
+  
+  
   h2 {
     font-size: 1.6rem;
     font-weight: 900;
@@ -751,20 +758,21 @@ input[type="number"] {
   display: flex;
   flex-direction: column;
   background: #fff;
+  background: var(--grey-00);
   border: 1px solid var(--grey-10);
   margin-bottom: 1rem;
   border-radius: 1rem;
   padding: 1rem;
 
   span {
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: bold;
     padding: 1rem 0;
     cursor: pointer;
   }
 
   p {
-    font-size: .875rem;
+    font-size: 1rem;
     display: block;
     padding: 1rem 0;
   }
@@ -775,14 +783,13 @@ input[type="number"] {
 }
 
 .reviews {
-  padding: 8rem 7.5vw;
+  padding: 4rem 7.5vw;
   padding-bottom: 4rem;
   width: 100%;
   /* transform: translateY(-4rem);
   margin-top: -4rem; */
   background: var(--off-white);
-  overflow-x: scroll;
-
+  
   .title {
     text-align: center;
   }
@@ -793,7 +800,8 @@ input[type="number"] {
   gap: 1rem;
   max-width: 100%;
   margin: 0 auto;
-
+  overflow-x: scroll;
+  
   blockquote {
     /* flex: 1; */
     padding: 2rem;

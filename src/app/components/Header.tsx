@@ -11,17 +11,19 @@ export default function Header() {
   }
   return (
     <header>
-      <Image 
-        alt="jgrandcommodities"
-        src={'/jgc_logo.png'}
-        width={120}
-        height={150}
-        className="logo"
-      />
+      <Link href={'/'}>
+        <Image 
+          alt="jgrandcommodities"
+          src={'/jgc_logo.png'}
+          width={120}
+          height={150}
+          className="logo"
+        />
+      </Link>
 
       <nav className="desktop">
         <ul>
-          <li><a href="/#home">Home</a></li>
+          <li><a href="/">Home</a></li>
           <li><a href="/#products">Products</a></li>
           <li><a href="/story">About Us</a></li>
           <li><a href="/impact">Our Impact</a></li>
@@ -87,7 +89,7 @@ export default function Header() {
           </button>
 
           <ul>
-            <li><a href="/#home" onClick={toggleNav}>Home</a></li>
+            <li><a href="/" onClick={toggleNav}>Home</a></li>
             <li><a href="/#products" onClick={toggleNav}>Products</a></li>
             <li><a href="/story" onClick={toggleNav}>About Us</a></li>
             <li><a href="/impact" onClick={toggleNav}>Our Impact</a></li>
