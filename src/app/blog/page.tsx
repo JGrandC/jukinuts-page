@@ -1,44 +1,61 @@
 "use client"
 import Image from "next/image"
 import { useBlogContext } from "@/context/blogContext"
-import Link from "next/link"
+import { use } from 'react'
 
+type Params = Promise<{ blogId: string }>
 
-function Blog() {
+export default function PageBlog({ params }: { params: Params }) {
   const {blogs} = useBlogContext()
+
+  const {blogId} = use(params)
 
   return (
     <section className="blog">
+      <section className="currentBlog">
+        {
+          blogs.map((blog) => 
+            blog.id === blogId ?
+            <article key={blog.id}>
+              <h2>{blog.title}</h2>
+              <span>{blog.date}</span>
+              <Image 
+                alt="jgrandcommodities"
+                src={`/img/${blog.image}`}
+                width={1000}
+                height={100}
+              />
+              <div>
+                {blog.content}
+              </div>
+            </article>
+            : ""
+        )
+        }
+      </section>
 
       <h2>Recent</h2>
 
       <div className="group">
         {
           blogs.map((blog) => (
-          <figure key={blog.id}>
-            <figcaption>
-              <span>{blog.date}</span>
-              <Link href={`/blog/${blog.id}`}>{blog.title}</Link>
-              {/* <h4>Title</h4> */}
-            </figcaption>
-            <Image 
-              alt="jgrandcommodities"
-              src={`/img/${blog.image}`}
-              width={1000}
-              height={100}
-            />
-          </figure>
+          <a href={`/blog/${blog.id}`} key={blog.id}>
+            <figure>
+              <Image 
+                alt="jgrandcommodities"
+                src={`/img/${blog.image}`}
+                width={1000}
+                height={100}
+              />
+              <figcaption>
+                <h4>{blog.title}</h4>
+                <span>{blog.date}</span>
+              </figcaption>
+            </figure>
+          </a>
           ))
         }
       </div>
-    </section>
-  )
-}
-
-export default function Page() {
-  return (
-    <section>
-      <Blog/>
     </section>
   )
 }

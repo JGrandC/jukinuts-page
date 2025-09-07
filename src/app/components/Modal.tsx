@@ -87,7 +87,7 @@ export default function Modal() {
 
     const subTotal = cart.reduce((sum, item) => sum + item.total, 0);
 
-    const deliveryFee = 25;
+    const deliveryFee = 0;
 
     const total = subTotal + deliveryFee
 
@@ -237,6 +237,7 @@ export default function Modal() {
                                 ))
                             }
                         </div>
+
                         
                         {
                             cart.map(
@@ -244,11 +245,15 @@ export default function Modal() {
                                 item.id === prodId ? 
                                 <CartItem key={item.id} currentItem={item}/> : '')
                         }
+                        <button className="continue" onClick={toggleModal}>
+                            <span>Continue shopping</span>
+                        </button>
 
                         <div className="grand-total">
                             <ul>
                                 <li><span>Sub-total: </span><strong>Gh&#8373; {subTotal}</strong></li>
-                                <li><span>Delivery: </span><strong>Gh&#8373; {deliveryFee}</strong></li>
+                                {/* <li><span>Delivery: </span><strong>Gh&#8373; {deliveryFee}</strong></li> */}
+                                <li><span>Delivery: </span><strong>Calculate on delivery</strong></li>
                                 <br />
                                 <li><span>Total: </span><strong>Gh&#8373; {total}</strong></li>  
                             </ul>

@@ -103,7 +103,7 @@ function Team() {
             width={1000}
             height={100}
           />
-          <figcaption>- Zee</figcaption>
+          <figcaption>- Joseph M</figcaption>
         </figure>
         <figure>
           <Image 
@@ -123,6 +123,7 @@ export default function Story() {
   return (
     <main>
       <About/>
+      <Team/>
     </main>
   )
 }

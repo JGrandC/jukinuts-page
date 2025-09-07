@@ -23,11 +23,11 @@ export default function Header() {
         <ul>
           <li><a href="/#home">Home</a></li>
           <li><a href="/#products">Products</a></li>
-          <li><a href="/story">About</a></li>
-          <li><a href="/blog">Blog</a></li>
+          <li><a href="/story">About Us</a></li>
+          <li><a href="/impact">Our Impact</a></li>
+          <li><a href="/blog">Blogs</a></li>
           <li><a href="/#faq">Faq</a></li>
-          <li><a href="/#reviews">Reviews</a></li>
-          <li><a href="/#contact">Contact</a></li>
+          {/* <li><a href="/#contact">Contact</a></li> */}
         </ul>
 
         <div className="social">
@@ -89,11 +89,10 @@ export default function Header() {
           <ul>
             <li><a href="/#home" onClick={toggleNav}>Home</a></li>
             <li><a href="/#products" onClick={toggleNav}>Products</a></li>
-            <li><a href="/story" onClick={toggleNav}>About</a></li>
-            <li><a href="/blog" onClick={toggleNav}>Blog</a></li>
+            <li><a href="/story" onClick={toggleNav}>About Us</a></li>
+            <li><a href="/impact" onClick={toggleNav}>Our Impact</a></li>
+            <li><a href="/blog" onClick={toggleNav}>Blogs</a></li>
             <li><a href="/#faq" onClick={toggleNav}>Faq</a></li>
-            <li><a href="/#reviews" onClick={toggleNav}>Reviews</a></li>
-            <li><a href="/#contact"onClick={toggleNav}>Contact</a></li>
           </ul>
 
           <div className="social">

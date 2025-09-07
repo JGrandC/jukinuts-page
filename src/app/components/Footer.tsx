@@ -10,9 +10,8 @@ export default function Footer() {
             <div className="content">
               <h4>Our location</h4>
               <p>
-                FMB 2002B, Ablekuma Fanmilk.
-                P.O Box CT 3722
-                Cantonments, Accra
+                12 Raspberry Street,
+                Adenta-West, Accra.
               </p>
             </div>
           </li>

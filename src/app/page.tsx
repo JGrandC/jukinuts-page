@@ -20,7 +20,7 @@ function Banner() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 5000);
+    }, 2000);
 
     return () => clearInterval(interval); // Cleanup on unmount
   }, [images.length]);
@@ -32,16 +32,25 @@ function Banner() {
           {/* <span>Super healthy snacks</span> */}
           <h1>
             {/* <span>Super healthy cashews - </span> */}
-            
-            <span style={{color: 'var(--green)'}}>Natural, </span>
-            <span style={{color: 'var(--blue)'}}>Crunchy & </span>
-            <span style={{color: 'var(--red)'}}>Yummy!</span>
+            <span>From Ghana&apos;s farms to your hands - </span>
+            <span>Natural, </span>
+            <span>Crunchy & </span>
+            <span>Yummy!</span>
           </h1>
 
           <h4>
-            Super healthy cashews for your snack time
+            Healthy, Flavorful, Proudly Ghanaian.
           </h4>
-          <Link href={'/#products'} className="cta">Shop Now</Link>
+          <div className="flex gap-4 items-center">
+            <Link href={'/#products'} className="cta">
+              <span>Shop Now</span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" ><g><path d="M0,12A12,12,0,1,0,12,0,12.013,12.013,0,0,0,0,12Zm21,0a9,9,0,1,1-9-9A9.011,9.011,0,0,1,21,12Z"/><path d="M12.815,8.551,14.731,10.5H6.5a1.5,1.5,0,0,0,0,3h8.231l-1.916,1.949a1.5,1.5,0,1,0,2.14,2.1L18,14.45a3.524,3.524,0,0,0,0-4.9l-3.048-3.1a1.5,1.5,0,1,0-2.14,2.1Z"/></g></svg>
+            </Link>
+            <Link href={'/story'} className="cta">
+              <span>Learn More</span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" ><g><path d="M0,12A12,12,0,1,0,12,0,12.013,12.013,0,0,0,0,12Zm21,0a9,9,0,1,1-9-9A9.011,9.011,0,0,1,21,12Z"/><path d="M12.815,8.551,14.731,10.5H6.5a1.5,1.5,0,0,0,0,3h8.231l-1.916,1.949a1.5,1.5,0,1,0,2.14,2.1L18,14.45a3.524,3.524,0,0,0,0-4.9l-3.048-3.1a1.5,1.5,0,1,0-2.14,2.1Z"/></g></svg>
+            </Link>
+          </div>
         </div>
       </div>
 
@@ -56,6 +65,33 @@ function Banner() {
             </div>
           ))}
         </div>
+      </div>
+    </div>
+  )
+}
+
+function Highlight() {
+  return (
+    <div className="grid grid-cols-2 grid-rows-2 px-[7.5vw] justify-center content-center items-center">
+      <div>
+        <svg></svg>
+        <h4 className="font-bold">Farm-to-Tabe</h4>
+        <span>Small description</span>
+      </div>
+      <div className="text-right">
+        <svg></svg>
+        <h4 className="font-bold">Zero Waste</h4>
+        <span>Small description</span>
+      </div>
+      <div>
+        <svg></svg>
+        <h4 className="font-bold">Healthy Snacking</h4>
+        <span>Small description</span>
+      </div>
+      <div className="text-right">
+        <svg></svg>
+        <h4 className="font-bold">Global Quality</h4>
+        <span>Small description</span>
       </div>
     </div>
   )
@@ -162,6 +198,7 @@ function AllProducts() {
   return (
     <div className="allProducts">
       <div className="title">
+        <h1>Our Products</h1>
         <h2>Enjoy the variety of &apos;Juki Nuts Cashew flavours - brighten your mood and get crunchy!</h2>
       </div>
 
@@ -181,16 +218,10 @@ function About() {
         <h1>Eat healthy, Stay healthy.</h1>
 
         <p>
-          Juki nuts is about Introducing flare into 
-          the boring cashew nuts through our captivating packaging 
-          and introducing new flavours of roasted cashew nuts.
+          To ensure healthy consumption, Juki nuts is
+          introducing new flavours of roasted cashew nuts to spice up its taste and make it more palatable.
 
-          Introducing grand packaging with durable and non carcinogenic materials.
-
-          Flavouring our roasted cashew nuts to spice up its taste and make it more palatable.
-
-          Maintaining access to our products from anywhere through our well developed user experience model.
-          Establishing relationship with our customers and expanding our community to provide more better products.
+          with grand packaging made with durable and non carcinogenic materials.
         </p>
 
         <a href="/story" className="cta-link">
@@ -211,11 +242,10 @@ function About() {
 }
 
 function Process() {
-
   return (
     <section className="process">
       <div className="title">
-        <h2>The journey of our cashews - from the farm to your table</h2>
+        <h2>The journey of our cashews - <br />from the farm to your table</h2>
       </div>
 
       <div className="infographics">
@@ -288,6 +318,77 @@ function Process() {
     </section>
   )
 }
+function Process2() {
+  return (
+    <section className="process">
+      <div className="title">
+        <h2>Juki nut cashews - <br />Safe for everyone</h2>
+      </div>
+
+      <div className="infographics">
+        <Image 
+          alt="jgrandcommodities"
+          src={`/img/mini_magic-05.jpg`}
+          width={1000}
+          height={100}
+          className="rounded-[4rem]"
+        />
+        <ul>
+          <li>
+            <span>1</span>
+
+            <div>
+              <h4>Rich in Healthy Fats</h4>
+              <p>
+                Our cashews are rich in healthy fats that support heart health and lowr bad cholesterol.
+              </p>
+            </div>
+          </li>
+          <li>
+            <span>2</span>
+
+            <div>
+              <h4>Good Source of Protein</h4>
+              <p>
+                With a good amount of protein, our cashews are perfect for both kids and adults looking for a healthy snack.
+              </p>
+            </div>
+          </li>
+          <li>
+            <span>3</span>
+
+            <div>
+              <h4>Packed with Essential Minerals</h4>
+              <p>
+                Our cashews are packed with essential minerals like magnesium, copper, and zinc that support overall health.
+              </p>
+            </div>
+          </li>
+          <li>
+            <span>4</span>
+
+            <div>
+              <h4>Support healthy brain function</h4>
+              <p>
+                The unique compounds in our cashews may help support cognitive function and overall brain health
+              </p>
+            </div>
+          </li>
+          <li>
+            <span>5</span>
+
+            <div>
+              <h4>Helps with weight management</h4>
+              <p>
+                With fiber and protein, our cashews are a satisfying snack that can help with weight management
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+  )
+}
 
 
 function Blog() {
@@ -301,8 +402,8 @@ function Blog() {
       <div className="group">
         {
           blogs.map((blog) => (
-          <a href={`/blog/${blog.id}`}>
-          <figure key={blog.id}>
+          <a href={`/blog/${blog.id}`} key={blog.id}>
+          <figure>
             <Image 
               alt="jgrandcommodities"
               src={`/img/${blog.image}`}
@@ -381,6 +482,7 @@ function Reviews() {
   return (
     <section className="reviews" id="reviews">
       <div className="title">
+        <h1>Customer Reviews</h1>
         <h2>Real stories from our customers</h2>
       </div>
 
@@ -392,7 +494,7 @@ function Reviews() {
             sea salt flavor as well as the chilli, & couldn&apos;t get enough of them!
             I&apos;ll be experimenting with these in my gari soakings over the weekend to see how it goes
           </q>
-          <cite>- Joseph Mireku</cite>
+          <cite>- Joseph M</cite>
         </blockquote>
         <blockquote>
           <q>
@@ -410,17 +512,80 @@ function Reviews() {
   )
 }
 
+function Note() {
+  return (
+    <section className="note">
+      <div className="text">
+        {/* <h1>Eat healthy, Stay healthy.</h1> */}
+        <Image 
+          alt="jgrandcommodities"
+          src={`/img/cashews.JPG`}
+          width={1000}
+          height={100}
+        />
+
+        <h2>Our Impact</h2>
+
+        <p>
+          Juki nuts is about Introducing flare into 
+          the boring cashew nuts through our captivating packaging 
+          and introducing new flavours of roasted cashew nuts,
+
+          Maintaining access to our products from anywhere through our well developed user experience model,
+          Establishing relationship with our customers and expanding our community to provide more better products.
+        </p>
+
+        <a href="/story" className="cta-link">
+          <span>Learn More</span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" ><g><path d="M0,12A12,12,0,1,0,12,0,12.013,12.013,0,0,0,0,12Zm21,0a9,9,0,1,1-9-9A9.011,9.011,0,0,1,21,12Z"/><path d="M12.815,8.551,14.731,10.5H6.5a1.5,1.5,0,0,0,0,3h8.231l-1.916,1.949a1.5,1.5,0,1,0,2.14,2.1L18,14.45a3.524,3.524,0,0,0,0-4.9l-3.048-3.1a1.5,1.5,0,1,0-2.14,2.1Z"/></g></svg>
+        </a>
+      </div>
+    </section>
+  )
+}
+function Note2() {
+  return (
+    <section className="note">
+      <div className="text">
+        {/* <h1>Eat healthy, Stay healthy.</h1> */}
+        <Image 
+          alt="jgrandcommodities"
+          src={`/img/cashews.JPG`}
+          width={1000}
+          height={100}
+        />
+
+        <h2>Stay up healthy!</h2>
+
+        <p>
+          Our cashews is sourced from local farms in Ghana and it contains healthy nutrients.
+          We also add natural flavours to spice up your taste without causing any health damage.
+        </p>
+
+        <a href="/story" className="cta-link">
+          <span>Shop Now</span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" ><g><path d="M0,12A12,12,0,1,0,12,0,12.013,12.013,0,0,0,0,12Zm21,0a9,9,0,1,1-9-9A9.011,9.011,0,0,1,21,12Z"/><path d="M12.815,8.551,14.731,10.5H6.5a1.5,1.5,0,0,0,0,3h8.231l-1.916,1.949a1.5,1.5,0,1,0,2.14,2.1L18,14.45a3.524,3.524,0,0,0,0-4.9l-3.048-3.1a1.5,1.5,0,1,0-2.14,2.1Z"/></g></svg>
+        </a>
+      </div>
+    </section>
+  )
+}
+
 export default function Home() {
   const {modal} = useProductContext()
 
   return (
     <div>
       <Banner/>
+      <Highlight/>
       <AllProducts/>
+      <Note/>
       <Process/>
       <About/>
       <Reviews/>
+      <Process2/>
       <Faq/>
+      <Note2/>
       <Blog/>
 
       {
