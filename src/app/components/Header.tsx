@@ -25,7 +25,7 @@ export default function Header() {
         <ul>
           <li><a href="/">Home</a></li>
           <li><a href="/#products">Products</a></li>
-          <li><a href="/story">About Us</a></li>
+          <li><a href="/about">About Us</a></li>
           <li><a href="/impact">Our Impact</a></li>
           <li><a href="/blog">Blogs</a></li>
           <li><a href="/#faq">Faq</a></li>
@@ -91,7 +91,7 @@ export default function Header() {
           <ul>
             <li><a href="/" onClick={toggleNav}>Home</a></li>
             <li><a href="/#products" onClick={toggleNav}>Products</a></li>
-            <li><a href="/story" onClick={toggleNav}>About Us</a></li>
+            <li><a href="/about" onClick={toggleNav}>About Us</a></li>
             <li><a href="/impact" onClick={toggleNav}>Our Impact</a></li>
             <li><a href="/blog" onClick={toggleNav}>Blogs</a></li>
             <li><a href="/#faq" onClick={toggleNav}>Faq</a></li>

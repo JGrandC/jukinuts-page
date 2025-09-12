@@ -33,9 +33,9 @@ function Banner() {
           <h1>
             {/* <span>Super healthy cashews - </span> */}
             <span>From Ghana&apos;s farms to your hands - </span>
-            <span>Natural, </span>
-            <span>Crunchy & </span>
-            <span>Yummy!</span>
+            <span style={{ color: 'var(--brand-green)' }}>Natural, </span>
+            <span style={{ color: 'var(--brand-green)' }}>Crunchy & </span>
+            <span style={{ color: 'var(--brand-green)' }}>Yummy!</span>
           </h1>
 
           <h4>
@@ -46,8 +46,8 @@ function Banner() {
               <span>Shop Now</span>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" ><g><path d="M0,12A12,12,0,1,0,12,0,12.013,12.013,0,0,0,0,12Zm21,0a9,9,0,1,1-9-9A9.011,9.011,0,0,1,21,12Z"/><path d="M12.815,8.551,14.731,10.5H6.5a1.5,1.5,0,0,0,0,3h8.231l-1.916,1.949a1.5,1.5,0,1,0,2.14,2.1L18,14.45a3.524,3.524,0,0,0,0-4.9l-3.048-3.1a1.5,1.5,0,1,0-2.14,2.1Z"/></g></svg>
             </Link>
-            <Link href={'/story'} className="cta" style={{background: 'var(--off-white)', border: '1px solid var(--brand-orange)', color: 'var(--brand-orange)', fill: 'var(--brand-orange)'}}>
-              <span>Learn More</span>
+            <Link href={'/about'} className="cta" style={{background: 'var(--off-white)', border: '1px solid var(--brand-orange)', color: 'var(--brand-orange)', fill: 'var(--brand-orange)'}}>
+              <span>About Us</span>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" ><g><path d="M0,12A12,12,0,1,0,12,0,12.013,12.013,0,0,0,0,12Zm21,0a9,9,0,1,1-9-9A9.011,9.011,0,0,1,21,12Z"/><path d="M12.815,8.551,14.731,10.5H6.5a1.5,1.5,0,0,0,0,3h8.231l-1.916,1.949a1.5,1.5,0,1,0,2.14,2.1L18,14.45a3.524,3.524,0,0,0,0-4.9l-3.048-3.1a1.5,1.5,0,1,0-2.14,2.1Z"/></g></svg>
             </Link>
           </div>
@@ -76,7 +76,7 @@ function Highlight() {
       <div>
         <svg></svg>
         <h4 className="font-bold">Farm-to-Tabe</h4>
-        <span>Source directly from farms and processed locally</span>
+        <span>Sourced directly from farms and processed locally</span>
       </div>
       <div className="text-right">
         <svg></svg>
@@ -219,19 +219,14 @@ function About() {
         <h2>Eat healthy, Stay healthy.</h2>
 
         <p>
-          Juki nuts is about Introducing flare into 
-          the boring cashew nuts through our captivating packaging 
-          and introducing new flavours of roasted cashew nuts.
-
-          Introducing grand packaging with durable and non carcinogenic materials.
-
-          Flavouring our roasted cashew nuts to spice up its taste and make it more palatable.
-
-          Maintaining access to our products from anywhere through our well developed user experience model.
-          Establishing relationship with our customers and expanding our community to provide more better products.
+          JGrand Commodities was founded with a clear purpose: to transform the way Ghana&apos;s cashew industry creates value. For years, over 90% of Ghana&apos;s cashews left the country in their raw form - only to be processed abroad and sold back to Africa at premium prices, leaving smallholder farmers underpaid while foreign processors captured most of the profits. At the same time, diet-related diseases were rising sharply in Ghana, with one in four adults affected.
+          <br /><br />
+          We saw both a challenge and an opportunity. In 2020, JGrand Commodities set out to add value locally, ensuring that cashews are processed at the source, creating jobs, supporting healthier lifestyles, and reducing waste. This vision gave birth to our flagship brand - Juki Nuts - a line of premium roasted and flavored cashews crafted for both local and international markets.
+          <br /><br />
+          What began with small-batch roasting has grown into a youth-led agribusiness with a 0% waste model that turns by-products into cashew butter and cashew milk.
         </p>
 
-        <a href="/story" className="cta-link">
+        <a href="/about" className="cta-link">
           <span>Learn More</span>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" ><g><path d="M0,12A12,12,0,1,0,12,0,12.013,12.013,0,0,0,0,12Zm21,0a9,9,0,1,1-9-9A9.011,9.011,0,0,1,21,12Z"/><path d="M12.815,8.551,14.731,10.5H6.5a1.5,1.5,0,0,0,0,3h8.231l-1.916,1.949a1.5,1.5,0,1,0,2.14,2.1L18,14.45a3.524,3.524,0,0,0,0-4.9l-3.048-3.1a1.5,1.5,0,1,0-2.14,2.1Z"/></g></svg>
 
@@ -240,7 +235,37 @@ function About() {
 
       <Image 
         alt="jgrandcommodities"
-        src={`/img/cashews.JPG`}
+        src={`/img/our_story_cover.jpg`}
+        width={1000}
+        height={100}
+      />
+    </section>
+  )
+}
+function Impact() {
+  return (
+    <section className="about" id="about">
+      <div className="text">
+        <h1>Our Impact</h1>
+        <h2>Eat healthy, Stay healthy.</h2>
+
+        <p>
+          At Juki nuts, we&apos;re passionate about more than just delivering delicious and nutritious cashew nuts.
+          We&apos;re committed to making a positive impact on the communities we serve. By sourcing our products from local farmers in Ghana and employing
+          young individuals, we&apos;re helping to drive economic growth, promote social development, and foster sustainable practices. Here&apos;s a look at the impact we&apos;re making:
+       
+        </p>
+
+        <a href="/impact" className="cta-link">
+          <span>Learn More</span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" ><g><path d="M0,12A12,12,0,1,0,12,0,12.013,12.013,0,0,0,0,12Zm21,0a9,9,0,1,1-9-9A9.011,9.011,0,0,1,21,12Z"/><path d="M12.815,8.551,14.731,10.5H6.5a1.5,1.5,0,0,0,0,3h8.231l-1.916,1.949a1.5,1.5,0,1,0,2.14,2.1L18,14.45a3.524,3.524,0,0,0,0-4.9l-3.048-3.1a1.5,1.5,0,1,0-2.14,2.1Z"/></g></svg>
+
+        </a>
+      </div>
+
+      <Image 
+        alt="jgrandcommodities"
+        src={`/img/our_story_cover.jpg`}
         width={1000}
         height={100}
       />
@@ -269,9 +294,10 @@ function Process() {
 
         <Image 
           alt="jgrandcommodities"
-          src={`/img/mini_magic_blog.jpg`}
+          src={`/img/cashew_stand_white.jpg`}
           width={1000}
           height={100}
+          style={{borderRadius: '2rem'}}
         />
         <ul>
 
@@ -335,10 +361,10 @@ function Process2() {
       <div className="infographics">
         <Image 
           alt="jgrandcommodities"
-          src={`/img/mini_magic-05.jpg`}
+          src={`/img/cashew_stand.jpg`}
           width={1000}
           height={100}
-          className="rounded-[4rem]"
+          className="rounded-[2rem]"
         />
         <ul>
           <li>
@@ -524,23 +550,23 @@ function Note() {
     <section className="note">
       <div className="text">
         {/* <h1>Eat healthy, Stay healthy.</h1> */}
-        <Image 
-          alt="jgrandcommodities"
-          src={`/img/cashews.JPG`}
-          width={1000}
-          height={100}
-        />
 
-        <h2>Our Impact</h2>
+        <h2>Juki Nuts</h2>
 
         <p>
-          At Juki nuts, we&apos;re passionate about more than just delivering delicious and nutritious cashew nuts.
-          We&apos;re committed to making a positive impact on the communities we serve. By sourcing our products from local farmers in Ghana and employing
-          young individuals, we&apos;re helping to drive economic growth, promote social development, and foster sustainable practices. Here&apos;s a look at the impact we&apos;re making:
-        
+          Juki nuts is about Introducing flare into 
+          the boring cashew nuts through our captivating packaging 
+          and introducing new flavours of roasted cashew nuts.
+
+          {/* Introducing grand packaging with durable and non carcinogenic materials.
+
+          Flavouring our roasted cashew nuts to spice up its taste and make it more palatable.
+
+          Maintaining access to our products from anywhere through our well developed user experience model.
+          Establishing relationship with our customers and expanding our community to provide more better products. */}
         </p>
 
-        <a href="/impact" className="cta-link">
+        <a href="/about" className="cta-link">
           <span>Learn More</span>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" ><g><path d="M0,12A12,12,0,1,0,12,0,12.013,12.013,0,0,0,0,12Zm21,0a9,9,0,1,1-9-9A9.011,9.011,0,0,1,21,12Z"/><path d="M12.815,8.551,14.731,10.5H6.5a1.5,1.5,0,0,0,0,3h8.231l-1.916,1.949a1.5,1.5,0,1,0,2.14,2.1L18,14.45a3.524,3.524,0,0,0,0-4.9l-3.048-3.1a1.5,1.5,0,1,0-2.14,2.1Z"/></g></svg>
         </a>
@@ -550,29 +576,60 @@ function Note() {
 }
 function Note2() {
   return (
-    <section className="note">
-      <div className="text">
-        {/* <h1>Eat healthy, Stay healthy.</h1> */}
-        <Image 
-          alt="jgrandcommodities"
-          src={`/img/cashews.JPG`}
-          width={1000}
-          height={100}
-        />
+    <>
+      <section className="note">
+        <div className="text">
+          {/* <h1>Eat healthy, Stay healthy.</h1> */}
 
-        <h2>Stay up healthy!</h2>
+          <h2>Stay up healthy!</h2>
 
-        <p>
-          Our cashews is sourced from local farms in Ghana and it contains healthy nutrients.
-          We also add natural flavours to spice up your taste without causing any health damage.
-        </p>
+          <p>
+            Our cashews is sourced from local farms in Ghana and it contains healthy nutrients.
+            We also add natural flavours to spice up your taste without causing any health damage.
+          </p>
 
-        <a href="/#products" className="cta-link">
-          <span>Shop Now</span>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" ><g><path d="M0,12A12,12,0,1,0,12,0,12.013,12.013,0,0,0,0,12Zm21,0a9,9,0,1,1-9-9A9.011,9.011,0,0,1,21,12Z"/><path d="M12.815,8.551,14.731,10.5H6.5a1.5,1.5,0,0,0,0,3h8.231l-1.916,1.949a1.5,1.5,0,1,0,2.14,2.1L18,14.45a3.524,3.524,0,0,0,0-4.9l-3.048-3.1a1.5,1.5,0,1,0-2.14,2.1Z"/></g></svg>
-        </a>
-      </div>
-    </section>
+          <a href="/#products" className="cta-link">
+            <span>Shop Now</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" ><g><path d="M0,12A12,12,0,1,0,12,0,12.013,12.013,0,0,0,0,12Zm21,0a9,9,0,1,1-9-9A9.011,9.011,0,0,1,21,12Z"/><path d="M12.815,8.551,14.731,10.5H6.5a1.5,1.5,0,0,0,0,3h8.231l-1.916,1.949a1.5,1.5,0,1,0,2.14,2.1L18,14.45a3.524,3.524,0,0,0,0-4.9l-3.048-3.1a1.5,1.5,0,1,0-2.14,2.1Z"/></g></svg>
+          </a>
+        </div>
+      </section>
+      {/* <Image 
+        alt="jgrandcommodities"
+        src={`/img/cashews.JPG`}
+        width={1000}
+        height={100}
+      /> */}
+    </>
+  )
+}
+function Note3() {
+  return (
+    <>
+      <section className="note">
+        <div className="text">
+          {/* <h1>Eat healthy, Stay healthy.</h1> */}
+
+          <h2>Stay up healthy!</h2>
+
+          <p>
+            Our cashews is sourced from local farms in Ghana and it contains healthy nutrients.
+            We also add natural flavours to spice up your taste without causing any health damage.
+          </p>
+
+          <a href="/#products" className="cta-link">
+            <span>Shop Now</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" ><g><path d="M0,12A12,12,0,1,0,12,0,12.013,12.013,0,0,0,0,12Zm21,0a9,9,0,1,1-9-9A9.011,9.011,0,0,1,21,12Z"/><path d="M12.815,8.551,14.731,10.5H6.5a1.5,1.5,0,0,0,0,3h8.231l-1.916,1.949a1.5,1.5,0,1,0,2.14,2.1L18,14.45a3.524,3.524,0,0,0,0-4.9l-3.048-3.1a1.5,1.5,0,1,0-2.14,2.1Z"/></g></svg>
+          </a>
+        </div>
+      </section>
+      {/* <Image 
+        alt="jgrandcommodities"
+        src={`/img/cashews.JPG`}
+        width={1000}
+        height={100}
+      /> */}
+    </>
   )
 }
 
@@ -582,15 +639,17 @@ export default function Home() {
   return (
     <div>
       <Banner/>
+      <Note/>
       <Highlight/>
       <AllProducts/>
-      <Note/>
-      <Process/>
       <About/>
+      <Process/>
+      <Note2/>
       <Reviews/>
       <Process2/>
+      <Impact/>
       <Faq/>
-      <Note2/>
+      <Note3/>
       <Blog/>
 
       {
