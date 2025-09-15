@@ -25,7 +25,7 @@ export default function PageBlog({ params }: { params: Params }) {
                 width={1000}
                 height={100}
               />
-              <div>
+              <div className="content">
                 {blog.content}
               </div>
             </article>

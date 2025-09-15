@@ -10,6 +10,7 @@ import { type Product } from "@/context/productContext";
 
 function Banner() {
   const images = [
+    '/img/mini_magic-00.jpg',
     '/img/mini_magic-02.jpg',
     '/img/mini_magic-04.jpg',
   ];
@@ -20,7 +21,7 @@ function Banner() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 2000);
+    }, 3000);
 
     return () => clearInterval(interval); // Cleanup on unmount
   }, [images.length]);
@@ -134,6 +135,7 @@ function Product({image, size, price, id, name, packaging}:any) {
             {
               isVariant && variants ?
               <div className="category">
+                <p className="summary">{variants[0].description}</p>
                 <span>Choose size:</span>
                 <ul>
                   {
@@ -235,9 +237,10 @@ function About() {
 
       <Image 
         alt="jgrandcommodities"
-        src={`/img/our_story_cover.jpg`}
+        src={`/img/team-shot.jpg`}
         width={1000}
         height={100}
+        style={{maxWidth: '500px'}}
       />
     </section>
   )
@@ -294,10 +297,10 @@ function Process() {
 
         <Image 
           alt="jgrandcommodities"
-          src={`/img/cashew_stand_white.jpg`}
+          src={`/img/cashew-journey.jpg`}
           width={1000}
           height={100}
-          style={{borderRadius: '2rem'}}
+          style={{borderRadius: '2rem', maxWidth: '500px'}}
         />
         <ul>
 
@@ -361,10 +364,11 @@ function Process2() {
       <div className="infographics">
         <Image 
           alt="jgrandcommodities"
-          src={`/img/cashew_stand.jpg`}
+          src={`/img/mini_magic-01.jpg`}
           width={1000}
           height={100}
           className="rounded-[2rem]"
+          style={{borderRadius: '2rem', maxWidth: '500px'}}
         />
         <ul>
           <li>
@@ -527,7 +531,10 @@ function Reviews() {
             sea salt flavor as well as the chilli, & couldn&apos;t get enough of them!
             I&apos;ll be experimenting with these in my gari soakings over the weekend to see how it goes
           </q>
-          <cite>- Joseph M</cite>
+          <cite className="flex items-center gap-2">
+            <img src="https://avatar.iran.liara.run/public/40" alt="avatar" style={{ borderRadius: '50%', width: '40px', height: '40px' }}/>
+            <span>Joseph M</span>
+          </cite>
         </blockquote>
         <blockquote>
           <q>
@@ -538,7 +545,10 @@ function Reviews() {
             it&apos;s going to be me and juki nuts in this hot Accra.
 
           </q>
-          <cite>- Anna</cite>
+          <cite className="flex items-center gap-2">
+            <img src="https://avatar.iran.liara.run/public/78" alt="avatar" style={{ borderRadius: '50%', width: '40px', height: '40px' }}/>
+            <span>Anna</span>
+          </cite>
         </blockquote>
       </div>
     </section>
@@ -639,15 +649,15 @@ export default function Home() {
   return (
     <div>
       <Banner/>
-      <Note/>
-      <Highlight/>
+      {/* <Note/> */}
+      {/* <Highlight/> */}
       <AllProducts/>
       <About/>
       <Process/>
-      <Note2/>
+      {/* <Note2/> */}
       <Reviews/>
       <Process2/>
-      <Impact/>
+      {/* <Impact/> */}
       <Faq/>
       <Note3/>
       <Blog/>

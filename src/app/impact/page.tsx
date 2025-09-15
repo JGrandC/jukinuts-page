@@ -6,7 +6,7 @@ const PageImpact = () => {
     <section className="impact" style={{paddingTop: '6rem', flexDirection: 'column'}}>
         <Image 
           alt="jgrandcommodities"
-          src={`/img/our_impact_cover.jpg`}
+          src={`/img/cashew-nuts-collection.png`}
           width={1000}
           height={1000}
           style={{

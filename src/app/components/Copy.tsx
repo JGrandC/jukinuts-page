@@ -11,7 +11,7 @@ export default function Copy() {
         className="logo"
       />
       <div>
-        <p>JgrandCommodities &copy; {new Date().getFullYear()}</p>
+        <p>JGrandCommodities &copy; {new Date().getFullYear()}</p>
       </div>
       <div className="social">
         <ul>

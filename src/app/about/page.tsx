@@ -6,7 +6,7 @@ function About() {
     <section className="about" style={{paddingTop: '6rem', flexDirection: 'column'}}>
       <Image 
             alt="jgrandcommodities"
-            src={`/img/our_story_cover.jpg`}
+            src={`/img/team-shot.jpg`}
             width={1000}
             height={100}
             style={{
@@ -67,7 +67,7 @@ function About() {
 
         
       </div>
-      <Team/>
+      {/* <Team/> */}
     </section>
   )
 }

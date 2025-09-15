@@ -43,9 +43,14 @@ function CartItem({currentItem}: {currentItem: Item}) {
             </div>
         </div>
 
-        <span>Price is stated per box which contains 30 pouches for every box
-            <br />Product details, ingredients and composition.
-        </span>
+        <div>
+            <span>Price is stated per box which contains 30 pouches for every box</span>
+        </div>
+
+        <div className="description">
+            <h3><strong>Product details</strong></h3>
+            <p>{currentItem.description}</p>
+        </div>
     </div>
     )
 }
