@@ -345,6 +345,8 @@ header {
     margin: 2rem auto 0 auto;
     color: #555;
     white-space: pre-line;
+    height: 60px;
+    overflow: hidden;
   }
 }
 

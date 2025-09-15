@@ -169,11 +169,20 @@ function ProductGroup({productGroup}:any) {
     ).values()
   ];
 
-
+  const [expand, setExpand] = useState(false);
+  const handleSize = () => {
+    setExpand(!expand);
+  }
   return (
     <section className="products" >
       <h4 className="name">{productGroup}</h4>
-      <div className="unique-desc">{uniqueByPackaging[0].description}</div>
+      <div className="unique-desc" style={{
+        height: `${expand ? 'auto' : '60px'}`
+      }}>
+        {uniqueByPackaging[0].description}
+
+      </div>
+      <div onClick={handleSize} style={{display: 'block', color: 'var(--brand-green)', textAlign: 'center', cursor: 'pointer'}}>Read More</div>
       <div className="prod-grid">
         {
           uniqueByPackaging
@@ -477,7 +486,7 @@ function Faq() {
   const faqData: Faq[] = [
     {
       question: "Are the Cashews healthy for children?",
-      answer: "Our Cashews does not contain any harmful material, it is well  processed and safe for consumption for everyone at any age."
+      answer: "Our cashews do not contain any harmful substances, it is well  processed and safe for consumption for everyone at any age."
     },
     {
       question: "Which store can one shop Juki Nuts products?",

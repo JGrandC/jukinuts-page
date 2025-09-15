@@ -47,7 +47,11 @@ const initialProducts: Product[] = [
     id: "0x1",
     name: "Sea Salt Roasted Cashews",
     image: "Artboard_1-removebg-preview.png",
-    description: `Sizes Available: 50g pouch, 150g pouch, 300g jar, 620g jar
+    description: `Lightly salted cashews with a crunchy, savoury bite for any occasion.
+      Shelf life: 12 months; allergen: contains cashews, processed in facility with peanuts.
+      Great with drinks, lunch boxes, or sprinkled over salads.
+
+      Sizes Available: 50g pouch, 150g pouch, 300g jar, 620g jar
       Description: Premium cashews roasted and lightly seasoned with sea salt for a crunchy, savoury bite. A classic favourite for any occasion.
       Nutritional Highlights (per 100g):
         - Energy: ~567 kcal
@@ -69,7 +73,11 @@ const initialProducts: Product[] = [
     id: "0x2",
     name: "Sea Salt Roasted Cashews",
     image: "Artboard_1-removebg-preview.png",
-    description: `Sizes Available: 50g pouch, 150g pouch, 300g jar, 620g jar
+    description: `Lightly salted cashews with a crunchy, savoury bite for any occasion.
+      Shelf life: 12 months; allergen: contains cashews, processed in facility with peanuts.
+      Great with drinks, lunch boxes, or sprinkled over salads.
+      
+      Sizes Available: 50g pouch, 150g pouch, 300g jar, 620g jar
       Description: Premium cashews roasted and lightly seasoned with sea salt for a crunchy, savoury bite. A classic favourite for any occasion.
       Nutritional Highlights (per 100g):
         - Energy: ~567 kcal
@@ -91,7 +99,11 @@ const initialProducts: Product[] = [
     id: "0x4",
     name: "Sea Salt Roasted Cashews",
     image: "Artboard_5-removebg-preview.png",
-    description: `Sizes Available: 50g pouch, 150g pouch, 300g jar, 620g jar
+    description: `Lightly salted cashews with a crunchy, savoury bite for any occasion.
+      Shelf life: 12 months; allergen: contains cashews, processed in facility with peanuts.
+      Great with drinks, lunch boxes, or sprinkled over salads.
+
+      Sizes Available: 50g pouch, 150g pouch, 300g jar, 620g jar
       Description: Premium cashews roasted and lightly seasoned with sea salt for a crunchy, savoury bite. A classic favourite for any occasion.
       Nutritional Highlights (per 100g):
         - Energy: ~567 kcal
@@ -113,7 +125,11 @@ const initialProducts: Product[] = [
     id: "0x5",
     name: "Sea Salt Roasted Cashews",
     image: "Artboard_5-removebg-preview.png",
-    description: `Sizes Available: 50g pouch, 150g pouch, 300g jar, 620g jar
+    description: `Lightly salted cashews with a crunchy, savoury bite for any occasion.
+      Shelf life: 12 months; allergen: contains cashews, processed in facility with peanuts.
+      Great with drinks, lunch boxes, or sprinkled over salads.
+
+      Sizes Available: 50g pouch, 150g pouch, 300g jar, 620g jar
       Description: Premium cashews roasted and lightly seasoned with sea salt for a crunchy, savoury bite. A classic favourite for any occasion.
       Nutritional Highlights (per 100g):
         - Energy: ~567 kcal
@@ -135,7 +151,11 @@ const initialProducts: Product[] = [
     id: "0x6",
     name: "Unsalted Roasted Cashews",
     image: "Artboard_2-removebg-preview.png",
-    description: `Sizes Available: 50g pouch, 150g pouch, 300g jar, 620g jar
+    description: `Pure roasted cashews with no added salt — simple, healthy, and heart-friendly.
+      Shelf life: 12 months; allergen: contains cashews, processed in facility with peanuts.
+      Perfect for low-sodium diets, smoothies, granola, and nut butters.
+
+      Sizes Available: 50g pouch, 150g pouch, 300g jar, 620g jar
       Description: Pure, natural cashews roasted to perfection with no added salt — perfect for those who prefer their snacks simple, healthy, and heart-friendly.
       Nutritional Highlights (per 100g):
         - Energy: ~553 kcal
@@ -157,7 +177,11 @@ const initialProducts: Product[] = [
     id: "0x7",
     name: "Unsalted Roasted Cashews",
     image: "Artboard_2-removebg-preview.png",
-    description: `Sizes Available: 50g pouch, 150g pouch, 300g jar, 620g jar
+    description: `Pure roasted cashews with no added salt — simple, healthy, and heart-friendly.
+      Shelf life: 12 months; allergen: contains cashews, processed in facility with peanuts.
+      Perfect for low-sodium diets, smoothies, granola, and nut butters.
+      
+      Sizes Available: 50g pouch, 150g pouch, 300g jar, 620g jar
       Description: Pure, natural cashews roasted to perfection with no added salt — perfect for those who prefer their snacks simple, healthy, and heart-friendly.
       Nutritional Highlights (per 100g):
         - Energy: ~553 kcal
@@ -179,7 +203,11 @@ const initialProducts: Product[] = [
     id: "0x9",
     name: "Unsalted Roasted Cashews",
     image: "Artboard_4-removebg-preview.png",
-    description: `Sizes Available: 50g pouch, 150g pouch, 300g jar, 620g jar
+    description: `Pure roasted cashews with no added salt — simple, healthy, and heart-friendly.
+      Shelf life: 12 months; allergen: contains cashews, processed in facility with peanuts.
+      Perfect for low-sodium diets, smoothies, granola, and nut butters.
+      
+      Sizes Available: 50g pouch, 150g pouch, 300g jar, 620g jar
       Description: Pure, natural cashews roasted to perfection with no added salt — perfect for those who prefer their snacks simple, healthy, and heart-friendly.
       Nutritional Highlights (per 100g):
         - Energy: ~553 kcal
@@ -201,7 +229,10 @@ const initialProducts: Product[] = [
     id: "0x10",
     name: "Unsalted Roasted Cashews",
     image: "Artboard_4-removebg-preview.png",
-    description: `Sizes Available: 50g pouch, 150g pouch, 300g jar, 620g jar
+    description: `Pure roasted cashews with no added salt — simple, healthy, and heart-friendly.
+      Shelf life: 12 months; allergen: contains cashews, processed in facility with peanuts.
+      Perfect for low-sodium diets, smoothies, granola, and nut butters.Sizes Available: 50g pouch, 150g pouch, 300g jar, 620g jar
+
       Description: Pure, natural cashews roasted to perfection with no added salt — perfect for those who prefer their snacks simple, healthy, and heart-friendly.
       Nutritional Highlights (per 100g):
         - Energy: ~553 kcal
@@ -223,7 +254,11 @@ const initialProducts: Product[] = [
     id: "0x11",
     name: "Chilli Roasted Cashews",
     image: "Artboard_3-removebg-preview.png",
-    description: `Sizes Available: 50g pouch, 150g pouch
+    description: `Cashews roasted with a subtle chili spice blend for a bold, zesty kick.
+      Shelf life: 9 months; allergen: contains cashews, processed in facility with peanuts.
+      Best enjoyed as a snack; pairs well with beverages and savoury dishes.
+
+      Sizes Available: 50g pouch, 150g pouch
       Description: Cashews roasted and coated with a subtle chili spice blend for a bold, zesty kick. A great choice for adventurous snackers.
       Nutritional Highlights (per 100g):
         - Energy: ~575 kcal
@@ -245,7 +280,11 @@ const initialProducts: Product[] = [
     id: "0x12",
     name: "Chilli Roasted Cashews",
     image: "Artboard_3-removebg-preview.png",
-    description: `Sizes Available: 50g pouch, 150g pouch
+    description: `ashews roasted with a subtle chili spice blend for a bold, zesty kick.
+      Shelf life: 9 months; allergen: contains cashews, processed in facility with peanuts.
+      Best enjoyed as a snack; pairs well with beverages and savoury dishes.
+      
+      Sizes Available: 50g pouch, 150g pouch
       Description: Cashews roasted and coated with a subtle chili spice blend for a bold, zesty kick. A great choice for adventurous snackers.
       Nutritional Highlights (per 100g):
         - Energy: ~575 kcal
@@ -267,6 +306,7 @@ const initialProducts: Product[] = [
     id: "0x16",
     name: "Cashew Butter (Out of stock)",
     image: "Cashew_butter-removebg-preview.png",
+    description: "Cashew butter",
     category: {
       size: "--",
       price: "--",
