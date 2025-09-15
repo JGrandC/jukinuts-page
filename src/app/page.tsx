@@ -182,7 +182,11 @@ function ProductGroup({productGroup}:any) {
         {uniqueByPackaging[0].description}
 
       </div>
-      <div onClick={handleSize} style={{display: 'block', color: 'var(--brand-green)', textAlign: 'center', cursor: 'pointer'}}>Read More</div>
+      <div onClick={handleSize} style={{display: 'block', color: 'var(--brand-green)', fontWeight: 'bold', textAlign: 'center', cursor: 'pointer', marginTop: '1rem'}}>
+        {
+          expand ? 'Read Less' : 'Read More'
+        }
+      </div>
       <div className="prod-grid">
         {
           uniqueByPackaging
