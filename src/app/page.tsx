@@ -638,7 +638,7 @@ function Note3() {
           <h2>Stay up healthy!</h2>
 
           <p>
-            Our cashews is sourced from local farms in Ghana and it contains healthy nutrients.
+            Our cashews are sourced from local smallholder farmers in the Bono region of Ghana and it contains healthy nutrients.
             We also add natural flavours to spice up your taste without causing any health damage.
           </p>
 
