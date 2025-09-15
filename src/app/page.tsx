@@ -135,7 +135,7 @@ function Product({image, size, price, id, name, packaging}:any) {
             {
               isVariant && variants ?
               <div className="category">
-                <p className="summary">{variants[0].description}</p>
+                {/* <p className="summary">{variants[0].description}</p> */}
                 <span>Choose size:</span>
                 <ul>
                   {
@@ -171,6 +171,7 @@ function ProductGroup({productGroup}:any) {
   return (
     <section className="products" >
       <h4 className="name">{productGroup}</h4>
+      <div className="unique-desc">{uniqueByPackaging[0].description}</div>
       <div className="prod-grid">
         {
           uniqueByPackaging
@@ -239,8 +240,8 @@ function About() {
         alt="jgrandcommodities"
         src={`/img/team-shot.jpg`}
         width={1000}
-        height={100}
-        style={{maxWidth: '500px'}}
+        height={1000}
+        style={{borderRadius: '2rem', maxWidth: '400px', maxHeight: '400px', objectFit: 'cover'}}
       />
     </section>
   )
@@ -300,10 +301,9 @@ function Process() {
           src={`/img/cashew-journey.jpg`}
           width={1000}
           height={100}
-          style={{borderRadius: '2rem', maxWidth: '500px'}}
+          style={{borderRadius: '2rem', maxWidth: '400px', minHeight: '400px', objectFit: 'cover'}}
         />
         <ul>
-
           <li>
             <span>1</span>
 
@@ -368,7 +368,7 @@ function Process2() {
           width={1000}
           height={100}
           className="rounded-[2rem]"
-          style={{borderRadius: '2rem', maxWidth: '500px'}}
+          style={{borderRadius: '2rem', maxWidth: '400px', minHeight: '400px', objectFit: 'cover'}}
         />
         <ul>
           <li>

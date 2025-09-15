@@ -335,15 +335,17 @@ header {
     /* translate: -5px 55px; */
     /* display: inline-block; */
   }
-  /* &:nth-of-type(2) .name {
-    background: #cbcca8;
+  
+  .unique-desc {
+    font-size: .875rem;
+    font-weight: 600;
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+    margin: 2rem auto 0 auto;
+    color: #555;
+    white-space: pre-line;
   }
-  &:nth-of-type(3) .name {
-    background: #ffc6aa;
-  }
-  &:nth-of-type(4) .name {
-    background: #c9ffaa;
-  } */
 }
 
 .prod-grid {
