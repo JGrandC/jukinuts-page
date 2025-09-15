@@ -665,7 +665,6 @@ export default function Home() {
     <div>
       <Banner/>
       {/* <Note/> */}
-      {/* <Highlight/> */}
       <AllProducts/>
       <About/>
       <Process/>
