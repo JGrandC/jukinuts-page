@@ -353,6 +353,7 @@ header {
   grid-template-columns: repeat(2, 1fr);
   /* background: var(--grey-00); */
   /* border: 1px solid var(--grey-05); */
+  gap: 1rem;
   border-radius: 1rem;
   overflow: hidden;
 }
@@ -388,6 +389,12 @@ header {
   gap: 1rem; */
   text-align: center;
   font-weight: bold;
+  transform: translateY(-1rem);
+
+  .package-name span {
+    font-size: .875rem;
+    line-height: 1;
+  }
 }
 
 

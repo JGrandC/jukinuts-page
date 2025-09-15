@@ -131,26 +131,28 @@ function Product({image, size, price, id, name, packaging}:any) {
 
       <figcaption className="feature">
         
+        <div className="package-name">
           <span>{name}</span> <span>({packaging})</span>
-            {
-              isVariant && variants ?
-              <div className="category">
-                {/* <p className="summary">{variants[0].description}</p> */}
-                <span>Choose size:</span>
-                <ul>
-                  {
+        </div>
+        {
+          isVariant && variants ?
+          <div className="category">
+            {/* <p className="summary">{variants[0].description}</p> */}
+            <span>Choose size:</span>
+            <ul>
+              {
 
-                    variants.map(variant => (
-                      <li className="selected" key={variant.id} onClick={
-                        () => Number(variant.category.price) > 0 ? showDetails(variant.id) : undefined
-                      }><span>{variant.category.size}</span>/<span>Gh&#8373; {variant.category.price}</span></li>
-                    ))
-                  }
-                </ul>
-              </div>
-              :
-              null
-            }
+                variants.map(variant => (
+                  <li className="selected" key={variant.id} onClick={
+                    () => Number(variant.category.price) > 0 ? showDetails(variant.id) : undefined
+                  }><span>{variant.category.size}</span>/<span>Gh&#8373; {variant.category.price}</span></li>
+                ))
+              }
+            </ul>
+          </div>
+          :
+          null
+        }
 
       </figcaption>
     </figure>
