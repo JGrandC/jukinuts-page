@@ -280,7 +280,7 @@ const initialProducts: Product[] = [
     id: "0x12",
     name: "Chilli Roasted Cashews",
     image: "Artboard_3-removebg-preview.png",
-    description: `ashews roasted with a subtle chili spice blend for a bold, zesty kick.
+    description: `Cashews roasted with a subtle chili spice blend for a bold, zesty kick.
       Shelf life: 9 months; allergen: contains cashews, processed in facility with peanuts.
       Best enjoyed as a snack; pairs well with beverages and savoury dishes.
       
