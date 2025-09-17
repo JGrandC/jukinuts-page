@@ -31,7 +31,7 @@ export default function PageBlog() {
         }
       </div>
       
-      <h2>Featured</h2>
+      <h2>Featured In</h2>
       <div className="group">
         {
           featuredBlogs.map((blog) => (
