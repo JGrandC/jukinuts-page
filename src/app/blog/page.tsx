@@ -35,7 +35,7 @@ export default function PageBlog() {
       <div className="group">
         {
           featuredBlogs.map((blog) => (
-          <a href={`/blog/${blog.id}`} key={blog.id}>
+          <a href={blog.link} key={blog.id}>
             <figure>
               <figcaption style={{padding: "1rem", height: "100%"}}>
                 <h4>{blog.title}</h4>
