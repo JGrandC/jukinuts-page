@@ -714,9 +714,11 @@ input[type="number"] {
   
   .group {
     display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
     margin-bottom: 1rem;
     background: var(--off-white);
+    height: auto;
 
     a {
       flex: 1;
@@ -724,6 +726,7 @@ input[type="number"] {
     figure {
       width: 100%;
       /* padding: 2rem; */
+      height: 100%;
       background: var(--grey-00);
       border: 1px solid var(--grey-05);
       /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
@@ -745,10 +748,12 @@ input[type="number"] {
           font: .875rem;
           color: var(--brand-orange);
           font-weight: 900;
+          line-height: 1;
         }
 
         h4{
           font-weight: 400;
+          margin-bottom: .5rem;
         }
 
         /* a {

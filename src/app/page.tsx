@@ -444,7 +444,7 @@ function Process2() {
 
 
 function Blog() {
-  const {blogs} = useBlogContext()
+  const {blogs, featuredBlogs} = useBlogContext()
 
   return (
     <section className="blog" id="blog">
@@ -467,6 +467,22 @@ function Blog() {
               <span>{blog.date}</span>
             </figcaption>
           </figure>
+          </a>
+          ))
+        }
+      </div>
+
+      <h2>Featured</h2>
+      <div className="group">
+        {
+          featuredBlogs.map((blog) => (
+          <a href={`/blog/${blog.id}`} key={blog.id}>
+            <figure>
+              <figcaption style={{padding: "1rem", height: "100%"}}>
+                <h4>{blog.title}</h4>
+                <span style={{marginTop: "auto"}}>{blog.source}</span>
+              </figcaption>
+            </figure>
           </a>
           ))
         }

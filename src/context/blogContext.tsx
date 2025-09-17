@@ -19,7 +19,55 @@ type BlogType = {
 
 type BlogContextType = {
   blogs: BlogType[],
+  featuredBlogs: FeaturedBlogType[],
 }
+
+type FeaturedBlogType = {
+  id: string,
+  title: string,
+  source: string,
+  link: string,
+}
+
+// Sample Featured Blog Data
+const featuredBlogs: FeaturedBlogType[] = [
+  {
+    id: "0x1",
+    title: "Incubator Programme: The Green Business Competition Programme for MSMEs",
+    source: "Ghana Climate Innovation Center",
+    link: "https://ghanacic.ashesi.edu.gh/ventures/jgrand-commodities/"
+  },
+  {
+    id: "0x2",
+    title: "JGrand Commodities: From Porch-Side Passion to Ghana’s Premier Cashew Brand",
+    source: "Lasonde Entrepreneur Institute",
+    link: "https://lassonde.utah.edu/jgrand-commodities-from-porch-side-passion-to-ghanas-premier-cashew-brand/"
+  },
+  {
+    id: "0x3",
+    title: "20 agribusinesses win US$10,000 each in Tullow AgriVentures Programme Pitch 2025",
+    source: "The Business & Financial Times",
+    link: "https://thebftonline.com/2025/08/15/20-agribusinesses-win-us10000-each-in-tullow-agriventures-pitch-2025/"
+  },
+  {
+    id: "0x4",
+    title: "Inaugural Cohort of Founders Graduates from Master of Business Creation Global",
+    source: "TechBuzz News",
+    link: "https://www.techbuzznews.com/inaugural-cohort-of-founders-graduates-from-master-of-business-creation-global/"
+  },
+  {
+    id: "0x5",
+    title: "Inaugural Cohort of Founders Graduates from Master of Business Creation Global",
+    source: "Utah Business",
+    link: "https://www.utahbusiness.com/press-releases/2025/08/26/inaugural-cohort-founders-graduates-master-business-creation-global/"
+  },
+  {
+    id: "0x6",
+    title: "Inspiring journey of Juki Nuts founders at Intra-Africa Trade Fair",
+    source: "Graphic Online",
+    link: "https://www.graphic.com.gh/lifestyle/life/inspiring-journey-of-juki-nuts-founders-at-intra-africa-trade-fair.html"
+  },
+]
 
 // Sample Blog Data
 const sampleBlog: BlogType[] = [
@@ -139,10 +187,12 @@ const BlogContext = createContext<BlogContextType | undefined>(undefined)
 // Context Provider
 export const BlogProvider = ({ children }: { children: ReactNode }) => {
   const [blogs] = useState<BlogType[]>(sampleBlog)
+  const [featured] = useState<FeaturedBlogType[]>(featuredBlogs)
   
   return (
     <BlogContext.Provider value={{
-      blogs
+      blogs,
+      featuredBlogs: featured,
     }}>
       {children}
     </BlogContext.Provider>
