@@ -23,16 +23,14 @@ function Banner() {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
     }, 3000);
 
-    return () => clearInterval(interval); // Cleanup on unmount
+    return () => clearInterval(interval); 
   }, [images.length]);
 
   return (
     <div className="banner" id="home">
       <div className="banner_txt">
         <div>
-          {/* <span>Super healthy snacks</span> */}
           <h1>
-            {/* <span>Super healthy cashews - </span> */}
             <span>From Ghana&apos;s farms to your hands - </span>
             <span style={{ color: 'var(--brand-green)' }}>Natural, </span>
             <span style={{ color: 'var(--brand-green)' }}>Crunchy & </span>
@@ -56,9 +54,6 @@ function Banner() {
       </div>
 
       <div className="banner_img">
-        {/* <div className="banner_div"></div>
-        <div className="banner_div"></div>
-        <div className="banner_div"></div> */}
         <div className="slider" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
           {images.map((src, index) => (
             <div key={index} className="slide">
@@ -71,34 +66,7 @@ function Banner() {
   )
 }
 
-function Highlight() {
-  return (
-    <div className="grid grid-cols-2 grid-rows-2 px-[7.5vw] justify-center content-center items-center">
-      <div>
-        <svg></svg>
-        <h4 className="font-bold">Farm-to-Tabe</h4>
-        <span>Sourced directly from farms and processed locally</span>
-      </div>
-      <div className="text-right">
-        <svg></svg>
-        <h4 className="font-bold">Zero Waste</h4>
-        <span>Reusable packaging and proper transportation</span>
-      </div>
-      <div>
-        <svg></svg>
-        <h4 className="font-bold">Healthy Snacking</h4>
-        <span>Rich in essential nutrients, protein and fiber</span>
-      </div>
-      <div className="text-right">
-        <svg></svg>
-        <h4 className="font-bold">Global Quality</h4>
-        <span>Super durable packaging for long shelf life</span>
-      </div>
-    </div>
-  )
-}
-
-function Product({image, size, price, id, name, packaging}:any) {
+function Product({image, name, packaging}:any) {
   const {activeProd, toggleModal, addItem, itemVariants} = useProductContext()
   const [variants, setVariants] = useState<Product[] | null>(null);
   const [isVariant, setIsVariant] = useState<boolean>(false);
@@ -120,7 +88,6 @@ function Product({image, size, price, id, name, packaging}:any) {
   }
 
   return (
-    // <figure className="prod" onClick={() => showDetails(id)}>
       <figure className="prod" onClick={toggleVariant}>
       <Image 
         alt="jgrandcommodities"
@@ -137,7 +104,6 @@ function Product({image, size, price, id, name, packaging}:any) {
         {
           isVariant && variants ?
           <div className="category">
-            {/* <p className="summary">{variants[0].description}</p> */}
             <span>Choose size:</span>
             <ul>
               {
@@ -261,6 +227,7 @@ function About() {
     </section>
   )
 }
+
 function Impact() {
   return (
     <section className="about" id="about">
@@ -300,17 +267,6 @@ function Process() {
       </div>
 
       <div className="infographics">
-        {/* <video
-          src="/story.mp4"
-          width="100%"
-          height="auto"
-          autoPlay
-          muted
-          loop
-          playsInline
-          controls={false}
-        /> */}
-
         <Image 
           alt="jgrandcommodities"
           src={`/img/cashew-journey.jpg`}
@@ -586,91 +542,23 @@ function Reviews() {
   )
 }
 
-function Note() {
+function Note3() {
   return (
     <section className="note">
       <div className="text">
-        {/* <h1>Eat healthy, Stay healthy.</h1> */}
-
-        <h2>Juki Nuts</h2>
+        <h2>Stay up healthy!</h2>
 
         <p>
-          Juki nuts is about Introducing flare into 
-          the boring cashew nuts through our captivating packaging 
-          and introducing new flavours of roasted cashew nuts.
-
-          {/* Introducing grand packaging with durable and non carcinogenic materials.
-
-          Flavouring our roasted cashew nuts to spice up its taste and make it more palatable.
-
-          Maintaining access to our products from anywhere through our well developed user experience model.
-          Establishing relationship with our customers and expanding our community to provide more better products. */}
+          Our cashews are sourced from local smallholder farmers in the Bono region of Ghana and it contains healthy nutrients.
+          We also add natural flavours to spice up your taste without causing any health damage.
         </p>
 
-        <a href="/about" className="cta-link">
-          <span>Learn More</span>
+        <a href="/#products" className="cta-link">
+          <span>Shop Now</span>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" ><g><path d="M0,12A12,12,0,1,0,12,0,12.013,12.013,0,0,0,0,12Zm21,0a9,9,0,1,1-9-9A9.011,9.011,0,0,1,21,12Z"/><path d="M12.815,8.551,14.731,10.5H6.5a1.5,1.5,0,0,0,0,3h8.231l-1.916,1.949a1.5,1.5,0,1,0,2.14,2.1L18,14.45a3.524,3.524,0,0,0,0-4.9l-3.048-3.1a1.5,1.5,0,1,0-2.14,2.1Z"/></g></svg>
         </a>
       </div>
     </section>
-  )
-}
-function Note2() {
-  return (
-    <>
-      <section className="note">
-        <div className="text">
-          {/* <h1>Eat healthy, Stay healthy.</h1> */}
-
-          <h2>Stay up healthy!</h2>
-
-          <p>
-            Our cashews are sourced from local smallholder farmers in the Bono region of Ghana and it contains healthy nutrients.
-            We also add natural flavours to spice up your taste without causing any health damage.
-          </p>
-
-          <a href="/#products" className="cta-link">
-            <span>Shop Now</span>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" ><g><path d="M0,12A12,12,0,1,0,12,0,12.013,12.013,0,0,0,0,12Zm21,0a9,9,0,1,1-9-9A9.011,9.011,0,0,1,21,12Z"/><path d="M12.815,8.551,14.731,10.5H6.5a1.5,1.5,0,0,0,0,3h8.231l-1.916,1.949a1.5,1.5,0,1,0,2.14,2.1L18,14.45a3.524,3.524,0,0,0,0-4.9l-3.048-3.1a1.5,1.5,0,1,0-2.14,2.1Z"/></g></svg>
-          </a>
-        </div>
-      </section>
-      {/* <Image 
-        alt="jgrandcommodities"
-        src={`/img/cashews.JPG`}
-        width={1000}
-        height={100}
-      /> */}
-    </>
-  )
-}
-function Note3() {
-  return (
-    <>
-      <section className="note">
-        <div className="text">
-          {/* <h1>Eat healthy, Stay healthy.</h1> */}
-
-          <h2>Stay up healthy!</h2>
-
-          <p>
-            Our cashews are sourced from local smallholder farmers in the Bono region of Ghana and it contains healthy nutrients.
-            We also add natural flavours to spice up your taste without causing any health damage.
-          </p>
-
-          <a href="/#products" className="cta-link">
-            <span>Shop Now</span>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" ><g><path d="M0,12A12,12,0,1,0,12,0,12.013,12.013,0,0,0,0,12Zm21,0a9,9,0,1,1-9-9A9.011,9.011,0,0,1,21,12Z"/><path d="M12.815,8.551,14.731,10.5H6.5a1.5,1.5,0,0,0,0,3h8.231l-1.916,1.949a1.5,1.5,0,1,0,2.14,2.1L18,14.45a3.524,3.524,0,0,0,0-4.9l-3.048-3.1a1.5,1.5,0,1,0-2.14,2.1Z"/></g></svg>
-          </a>
-        </div>
-      </section>
-      {/* <Image 
-        alt="jgrandcommodities"
-        src={`/img/cashews.JPG`}
-        width={1000}
-        height={100}
-      /> */}
-    </>
   )
 }
 
@@ -680,11 +568,9 @@ export default function Home() {
   return (
     <div>
       <Banner/>
-      {/* <Note/> */}
       <AllProducts/>
       <About/>
       <Process/>
-      {/* <Note2/> */}
       <Reviews/>
       <Process2/>
       {/* <Impact/> */}
