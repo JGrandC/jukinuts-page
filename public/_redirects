@@ -1,2 +1,2 @@
-https://jgrandcommodities.com/ /company 200!
-https://www.jgrandcommodities.com/ /company 200!
+https://jgrandcommodities.com/* /company/:splat 200!
+https://www.jgrandcommodities.com/* /company/:splat 200!
