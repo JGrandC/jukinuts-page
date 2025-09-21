@@ -15,7 +15,7 @@ const nunito = localFont({
 
 export const metadata: Metadata = {
   title: "Juki Nuts",
-  description: "Natural, Crunchy & Yummy Cashews",
+  description: "Healthy, Flavorful, Proudly Ghanaian - Enjoy the Natural, Crunchy & Yummy Juki Nuts Cashews direct from local farms in Ghana to your table.",
 };
 
 export default function RootLayout({
