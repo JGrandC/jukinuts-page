@@ -16,6 +16,35 @@ const nunito = localFont({
 export const metadata: Metadata = {
   title: "Juki Nuts",
   description: "Healthy, Flavorful, Proudly Ghanaian - Enjoy the Natural, Crunchy & Yummy Juki Nuts Cashews direct from local farms in Ghana to your table.",
+  metadataBase: new URL("https://jukinuts.com"),
+  openGraph: {
+    title: "Juki Nuts",
+    description: "Healthy, Flavorful, Proudly Ghanaian - Enjoy the Natural, Crunchy & Yummy Juki Nuts Cashews direct from local farms in Ghana to your table.",
+    url: "https://jukinuts.com",
+    siteName: "Juki Nuts",
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 800,
+        height: 600,
+        alt: "Juki Nuts",
+        type: "image/jpeg",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Juki Nuts",
+    description: "Healthy, Flavorful, Proudly Ghanaian - Enjoy the Natural, Crunchy & Yummy Juki Nuts Cashews direct from local farms in Ghana to your table.",
+    images: [{
+        url: "/twitter-image.png",
+        width: 800,
+        height: 600,
+        alt: "Juki Nuts",
+        type: "image/jpeg",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
