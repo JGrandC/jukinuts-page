@@ -1,0 +1,6 @@
+[[redirects]]
+  from = "/"
+  to = "/company"
+  status = 200
+  force = true
+  conditions = { Host = ["jgrandcommodities.com", "www.jgrandcommodities.com"] }

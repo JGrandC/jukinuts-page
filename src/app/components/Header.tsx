@@ -28,7 +28,7 @@ export default function Header() {
           <li><a href="/about">About Us</a></li>
           <li><a href="/impact">Our Impact</a></li>
           <li><a href="/blog">Blogs</a></li>
-          <li><a href="/company">Company</a></li>
+          <li><a href="https://www.jgrandcommodities.com">Company</a></li>
           <li><a href="/#faq">Faq</a></li>
           {/* <li><a href="/#contact">Contact</a></li> */}
         </ul>
@@ -95,7 +95,7 @@ export default function Header() {
             <li><a href="/about" onClick={toggleNav}>About Us</a></li>
             <li><a href="/impact" onClick={toggleNav}>Our Impact</a></li>
             <li><a href="/blog" onClick={toggleNav}>Blogs</a></li>
-            <li><a href="/company" onClick={toggleNav}>Company</a></li>
+            <li><a href="https://www.jgrandcommodities.com" onClick={toggleNav}>Company</a></li>
             <li><a href="/#faq" onClick={toggleNav}>Faq</a></li>
           </ul>
 
