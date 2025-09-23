@@ -335,8 +335,9 @@ header {
 }
 
 .prod-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  /* display: grid;
+  grid-template-columns: repeat(2, 1fr); */
+  display: flex;
   gap: 1rem;
   border-radius: 1rem;
   overflow: hidden;
@@ -344,11 +345,20 @@ header {
 
 
 .prod {
+  flex: 1;
   display: flex;
   flex-direction: column;
   cursor: pointer;
   width: 100%;
   position: relative;
+
+  &:first-of-type{
+    margin-left: auto;
+  }
+
+  &:last-of-type {
+    margin-right: auto;
+  }
 }
 
 .prod img {
