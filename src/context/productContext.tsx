@@ -59,10 +59,7 @@ const initialProducts: Product[] = [
         - Fat: 46g (of which saturates: 8g)
         - Carbohydrate: 29g (of which sugars: 6g)
         - Fibre: 3g
-        - Salt: 0.8g
-      Shelf Life & Storage: 12 months; keep sealed, away from heat and moisture.
-      Usage Suggestions: Perfect with drinks, lunch boxes, or sprinkled over salads.
-      Allergen Info: Contains cashews. Processed in a facility that also handles peanuts.`,
+        - Salt: 0.8g`,
     category: {
       size: "50g",
       price: "15",
@@ -85,10 +82,7 @@ const initialProducts: Product[] = [
         - Fat: 46g (of which saturates: 8g)
         - Carbohydrate: 29g (of which sugars: 6g)
         - Fibre: 3g
-        - Salt: 0.8g
-      Shelf Life & Storage: 12 months; keep sealed, away from heat and moisture.
-      Usage Suggestions: Perfect with drinks, lunch boxes, or sprinkled over salads.
-      Allergen Info: Contains cashews. Processed in a facility that also handles peanuts.`,
+        - Salt: 0.8g`,
     category: {
       size: "150g",
       price: "40",
@@ -111,10 +105,7 @@ const initialProducts: Product[] = [
         - Fat: 46g (of which saturates: 8g)
         - Carbohydrate: 29g (of which sugars: 6g)
         - Fibre: 3g
-        - Salt: 0.8g
-      Shelf Life & Storage: 12 months; keep sealed, away from heat and moisture.
-      Usage Suggestions: Perfect with drinks, lunch boxes, or sprinkled over salads.
-      Allergen Info: Contains cashews. Processed in a facility that also handles peanuts.`,
+        - Salt: 0.8g`,
     category: {
       size: "300g",
       price: "75",
@@ -137,10 +128,7 @@ const initialProducts: Product[] = [
         - Fat: 46g (of which saturates: 8g)
         - Carbohydrate: 29g (of which sugars: 6g)
         - Fibre: 3g
-        - Salt: 0.8g
-      Shelf Life & Storage: 12 months; keep sealed, away from heat and moisture.
-      Usage Suggestions: Perfect with drinks, lunch boxes, or sprinkled over salads.
-      Allergen Info: Contains cashews. Processed in a facility that also handles peanuts.`,
+        - Salt: 0.8g`,
     category: {
       size: "620g",
       price: "140",
@@ -163,10 +151,7 @@ const initialProducts: Product[] = [
         - Fat: 44g (of which saturates: 8g)
         - Carbohydrate: 30g (of which sugars: 6g)
         - Fibre: 3g
-        - Salt: 0g (naturally sodium-free)
-      Shelf Life & Storage: 12 months; store sealed in a cool, dry place.
-      Usage Suggestions: Great snack for low-sodium diets; blends into smoothies, granola, and nut butters.
-      Allergen Info: Contains cashews. Processed in a facility that also handles peanuts.`,
+        - Salt: 0g (naturally sodium-free)`,
     category: {
       size: "50g",
       price: "15",
@@ -189,10 +174,7 @@ const initialProducts: Product[] = [
         - Fat: 44g (of which saturates: 8g)
         - Carbohydrate: 30g (of which sugars: 6g)
         - Fibre: 3g
-        - Salt: 0g (naturally sodium-free)
-      Shelf Life & Storage: 12 months; store sealed in a cool, dry place.
-      Usage Suggestions: Great snack for low-sodium diets; blends into smoothies, granola, and nut butters.
-      Allergen Info: Contains cashews. Processed in a facility that also handles peanuts.`,
+        - Salt: 0g (naturally sodium-free)`,
     category: {
       size: "150g",
       price: "40",
@@ -215,10 +197,7 @@ const initialProducts: Product[] = [
         - Fat: 44g (of which saturates: 8g)
         - Carbohydrate: 30g (of which sugars: 6g)
         - Fibre: 3g
-        - Salt: 0g (naturally sodium-free)
-      Shelf Life & Storage: 12 months; store sealed in a cool, dry place.
-      Usage Suggestions: Great snack for low-sodium diets; blends into smoothies, granola, and nut butters.
-      Allergen Info: Contains cashews. Processed in a facility that also handles peanuts.`,
+        - Salt: 0g (naturally sodium-free)`,
     category: {
       size: "300g",
       price: "75",
@@ -240,10 +219,7 @@ const initialProducts: Product[] = [
         - Fat: 44g (of which saturates: 8g)
         - Carbohydrate: 30g (of which sugars: 6g)
         - Fibre: 3g
-        - Salt: 0g (naturally sodium-free)
-      Shelf Life & Storage: 12 months; store sealed in a cool, dry place.
-      Usage Suggestions: Great snack for low-sodium diets; blends into smoothies, granola, and nut butters.
-      Allergen Info: Contains cashews. Processed in a facility that also handles peanuts.`,
+        - Salt: 0g (naturally sodium-free)`,
     category: {
       size: "620g",
       price: "140",
@@ -266,10 +242,7 @@ const initialProducts: Product[] = [
         - Fat: 45g (of which saturates: 8g)
         - Carbohydrate: 31g (of which sugars: 7g)
         - Fibre: 3g
-        - Salt: 0.9g
-      Shelf Life & Storage: 9 months; store sealed, in a cool, dry place.
-      Usage Suggestions: Best enjoyed as a snack; pairs well with beverages or as a topping on savoury dishes.
-      Allergen Info: Contains cashews. Processed in a facility that also handles peanuts.`,
+        - Salt: 0.9g`,
     category: {
       size: "50g",
       price: "15",
@@ -292,10 +265,7 @@ const initialProducts: Product[] = [
         - Fat: 45g (of which saturates: 8g)
         - Carbohydrate: 31g (of which sugars: 7g)
         - Fibre: 3g
-        - Salt: 0.9g
-      Shelf Life & Storage: 9 months; store sealed, in a cool, dry place.
-      Usage Suggestions: Best enjoyed as a snack; pairs well with beverages or as a topping on savoury dishes.
-      Allergen Info: Contains cashews. Processed in a facility that also handles peanuts.`,
+        - Salt: 0.9g`,
     category: {
       size: "150g",
       price: "40",
